@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import { render } from 'astro:content';
+import Cuaderno from '../../../layouts/Cuaderno.astro';
+import Subrayado from '../../../components/Subrayado.astro';
+import { expediciones, entradas, expDe, slugDe, urlExp, urlEnt, fecha, minutos, dos, type Entrada } from '../../../lib/cuaderno';
+
+export async function getStaticPaths() {
+  const exps = await expediciones();
+  const todas = await entradas();
+  return todas
+    .filter((e) => exps.some((x) => x.id === expDe(e)))
+    .map((e) => {
+      const exp = exps.find((x) => x.id === expDe(e))!;
+      const hermanas = todas.filter((o) => expDe(o) === exp.id);
+      const i = hermanas.indexOf(e);
+      return {
+        params: { exp: exp.id, entrada: slugDe(e) },
+        props: { e, expTitulo: exp.data.titulo, anterior: hermanas[i - 1], siguiente: hermanas[i + 1] },
+      };
+    });
+}
+
+const { e, expTitulo, anterior, siguiente } = Astro.props as { e: Entrada; expTitulo: string; anterior?: Entrada; siguiente?: Entrada };
+const d = e.data;
+const { Content } = await render(e);
+---
+<Cuaderno titulo={d.titulo} descripcion={d.resumen}>
+  <Fragment slot="izquierda">
+    <div class="fields">
+      <span>Nº<b>{dos(d.numero)}</b></span>
+      <span>FECHA<b>{fecha(d.fecha)}</b></span>
+      {d.lugar && <span>LUGAR<b>{d.lugar}</b></span>}
+      {d.clima && <span>CLIMA<b>{d.clima}</b></span>}
+      <span>LECTURA<b>{minutos(e.body)} min</b></span>
+    </div>
+    {d.material.length > 0 && (
+      <>
+        <h3 class="tw" style="margin-top:4px">MATERIAL</h3>
+        <ul class="check">{d.material.map((m) => <li>{m}</li>)}</ul>
+      </>
+    )}
+    {d.boceto && (
+      <>
+        <h3 class="tw">BOCETO</h3>
+        <figure class="sketch">
+          <Image src={d.boceto} alt={d.pieBoceto ?? 'Boceto'} width={680} />
+          {d.pieBoceto && <figcaption class="fig">{d.pieBoceto}</figcaption>}
+        </figure>
+      </>
+    )}
+    {d.aprendido.length > 0 && (
+      <>
+        <h3 class="tw">LO APRENDIDO</h3>
+        <ul class="learned">{d.aprendido.map((a) => <li>{a}</li>)}</ul>
+      </>
+    )}
+  </Fragment>
+
+  <div class="fields">
+    <span><a href={urlExp(expDe(e))}>{expTitulo.toUpperCase()}</a></span>
+    <span>ENTRADA<b>{dos(d.numero)}</b></span>
+  </div>
+  <h1 class="title" style="font-size:clamp(36px,3.8vw,48px)">{d.titulo}</h1>
+  <Subrayado />
+  <article class="prose"><Content /></article>
+  <nav class="pager">
+    {anterior
+      ? <a href={urlEnt(anterior)}><small>← ENTRADA ANTERIOR</small>{anterior.data.titulo}</a>
+      : <a href={urlExp(expDe(e))}><small>← EXPEDICIÓN</small>{expTitulo}</a>}
+    {siguiente && <a href={urlEnt(siguiente)} style="text-align:right"><small>SIGUIENTE ENTRADA →</small>{siguiente.data.titulo}</a>}
+  </nav>
+</Cuaderno>

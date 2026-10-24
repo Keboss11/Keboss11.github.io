@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import { render } from 'astro:content';
+import Cuaderno from '../../../layouts/Cuaderno.astro';
+import Subrayado from '../../../components/Subrayado.astro';
+import Flecha from '../../../components/Flecha.astro';
+import { ESTADOS, expediciones, entradas, urlEnt, fecha, dos, type Expedicion } from '../../../lib/cuaderno';
+
+export async function getStaticPaths() {
+  const exps = await expediciones();
+  return exps.map((x, i) => ({ params: { exp: x.id }, props: { x, n: i + 1 } }));
+}
+
+const { x, n } = Astro.props as { x: Expedicion; n: number };
+const d = x.data;
+const lista = await entradas(x.id);
+const { Content } = await render(x);
+const est = ESTADOS[d.estado];
+---
+<Cuaderno titulo={d.titulo}>
+  <Fragment slot="izquierda">
+    <div class="fields">
+      <span>EXPEDICIÓN<b>Nº {dos(n)}</b></span>
+      {d.inicio && <span>INICIO<b>{fecha(d.inicio)}</b></span>}
+    </div>
+    {d.foto && (
+      <figure class="polaroid">
+        <Image src={d.foto} alt={d.pieFoto ?? d.titulo} width={440} />
+        {d.pieFoto && <figcaption>{d.pieFoto}</figcaption>}
+      </figure>
+    )}
+    <div class="specimen">
+      <dl>
+        <dt>ESPÉCIMEN</dt><dd>{d.titulo}</dd>
+        <dt>HÁBITAT</dt><dd>{d.habitat}</dd>
+        {d.material.length > 0 && <><dt>MATERIAL</dt><dd>{d.material.join(', ')}</dd></>}
+      </dl>
+    </div>
+    <span class="stamp" style={`--c:${est.color}`}>{d.estado.toUpperCase()}</span>
+    {d.objetivo && <span class="anno" style="margin-top:22px"><Flecha />objetivo: {d.objetivo}</span>}
+  </Fragment>
+
+  <div class="fields"><span>BITÁCORA</span><span>ENTRADAS<b>{lista.length}</b></span></div>
+  <h1 class="title">{d.titulo}</h1>
+  <Subrayado />
+  <div class="prose"><Content /></div>
+  {d.repo && <p><a href={d.repo} class="hand" style="font-size:22px">→ ver el código</a></p>}
+  <h3 class="tw">REGISTRO</h3>
+  {lista.length === 0 && d.pendientes.length === 0 && <p class="empty">Todavía no hay entradas en esta expedición.</p>}
+  <ol class="log">
+    {lista.map((e) => (
+      <li>
+        <span class="d">{fecha(e.data.fecha).slice(0, 5)}</span>
+        <a href={urlEnt(e)}>Entrada {dos(e.data.numero)} — {e.data.titulo}</a>
+        {e.data.resumen && <p>{e.data.resumen}</p>}
+      </li>
+    ))}
+    {d.pendientes.map((t) => <li class="todo"><span class="d">○</span><span class="t">{t} — por explorar</span></li>)}
+  </ol>
+</Cuaderno>
