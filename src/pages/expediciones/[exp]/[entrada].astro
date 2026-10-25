@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { render } from 'astro:content';
 import Cuaderno from '../../../layouts/Cuaderno.astro';
 import Subrayado from '../../../components/Subrayado.astro';
+import Flecha from '../../../components/Flecha.astro';
 import { expediciones, entradas, expDe, slugDe, urlExp, urlEnt, fecha, minutos, dos, type Entrada } from '../../../lib/cuaderno';
 
 export async function getStaticPaths() {
@@ -53,6 +54,12 @@ const { Content } = await render(e);
       <>
         <h3 class="tw">LO APRENDIDO</h3>
         <ul class="learned">{d.aprendido.map((a) => <li>{a}</li>)}</ul>
+      </>
+    )}
+    {d.notas.length > 0 && (
+      <>
+        <h3 class="tw">NOTAS AL MARGEN</h3>
+        {d.notas.map((n) => <span class="anno"><Flecha />{n}</span>)}
       </>
     )}
   </Fragment>

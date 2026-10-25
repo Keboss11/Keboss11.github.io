@@ -146,7 +146,7 @@ h3.tw::before { content: "§ "; }
 .check { list-style: none; padding: 0; margin: 0; font-family: var(--hand); font-size: 22px; line-height: 1.35; }
 .check li::before { content: "☑"; font-family: var(--body); margin-right: 8px; color: var(--green); }
 .sketch { margin: 4px 0 0; }
-.sketch img { display: block; max-width: 100%; max-height: 340px; width: auto; height: auto; }
+.sketch img { display: block; max-width: 100%; max-height: 340px; width: auto; height: auto; background: #f6f0df; padding: 8px; box-shadow: 1px 4px 10px var(--shadow); transform: rotate(-.8deg); }
 .fig { font-family: var(--tw); font-size: 12px; color: var(--muted); margin: 4px 0 0; }
 .learned { list-style: none; margin: 0 0 0 6px; padding: 0; font-family: var(--hand); font-size: 22px; line-height: 1.25; color: var(--blue); transform: rotate(-1deg); }
 .learned li::before { content: "• "; }
@@ -183,6 +183,22 @@ h3.tw::before { content: "§ "; }
 .prose .nota::before { content: ""; position: absolute; top: -14px; right: 22px; width: 16px; height: 44px; border: 2.5px solid #8b8f96; border-radius: 9px; border-bottom-color: transparent; }
 .prose .nota b, .prose .nota strong { color: var(--red); }
 
+/* notas al margen: <aside class="margen derecha|izquierda [roja|lapiz]"> */
+.prose .margen { --tinta: var(--blue); width: 42%; margin: 6px 0 14px; font-family: var(--hand); font-size: 21px; line-height: 1.2; color: var(--tinta); position: relative; }
+.prose .margen.derecha { float: right; margin-left: 20px; padding-left: 12px; border-left: 2px solid var(--tinta); transform: rotate(1.5deg); }
+.prose .margen.izquierda { float: left; margin-right: 20px; padding-right: 12px; border-right: 2px solid var(--tinta); transform: rotate(-1.5deg); text-align: right; }
+.prose .margen.derecha::before { content: "⟵ "; }
+.prose .margen.izquierda::after { content: " ⟶"; }
+.prose .margen.roja { --tinta: var(--red); }
+.prose .margen.lapiz { --tinta: var(--muted); }
+.prose .margen p { margin: 0; display: inline; }
+.prose h2, .prose h3, .prose pre, .prose .nota, .prose hr, .prose img, .prose figure { clear: both; }
+.prose::after { content: ""; display: block; clear: both; }
+
+/* tachado (~~texto~~) y círculo a mano (<span class="circulo">) */
+.prose del { text-decoration: none; background: linear-gradient(transparent 52%, var(--red) 52%, var(--red) 62%, transparent 62%); opacity: .75; }
+.prose .circulo { display: inline-block; padding: 0 6px; border: 2px solid var(--red); border-radius: 50% 45% 55% 48%; transform: rotate(-3deg); line-height: 1.3; }
+
 /* ---------- móvil: una sola hoja ---------- */
 @media (max-width: 860px) {
   :root { --pad: 8px; }
@@ -206,4 +222,7 @@ h3.tw::before { content: "§ "; }
   .top nav button, .top nav a { font-size: 19px; }
   .cover .band { right: 26px; }
   .help { font-size: 18px; }
+  .prose .margen.derecha, .prose .margen.izquierda { float: none; width: auto; margin: 6px 0 18px 10px; padding: 0 0 0 12px; border-right: 0; border-left: 2px solid var(--tinta); text-align: left; transform: rotate(-1deg); }
+  .prose .margen.izquierda::after { content: ""; }
+  .prose .margen.izquierda::before { content: "⟵ "; }
 }

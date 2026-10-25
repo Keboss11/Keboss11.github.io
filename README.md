@@ -24,9 +24,17 @@ Abre http://localhost:4321. Los cambios se ven al guardar.
 
 Las imágenes pueden ir junto al Markdown (rutas relativas, `./fotos/x.png`) o en `public/` (rutas absolutas, `/x.png`).
 
+### Ejemplo completo
+
+En `src/content/expediciones/ejemplo.md` y `src/content/entradas/ejemplo/01-anatomia-de-una-entrada.md` hay una expedición y un post de ejemplo que explican cada elemento y cómo se escribe. Están como `borrador: true`, así que solo se ven con `npm run dev`. Cópialos como punto de partida y bórralos cuando ya no te hagan falta.
+
 ### Elementos de cuaderno dentro del Markdown
 
-- `> texto` → anotación escrita a mano, en azul.
+- `<aside class="margen derecha">…</aside>` → anotación a mano en el lado derecho (el texto la rodea).
+- `<aside class="margen izquierda">…</aside>` → lo mismo, en el lado izquierdo. Añade `roja` o `lapiz` para cambiar la tinta.
+- `notas:` en los datos de la entrada → anotaciones con flecha en la página izquierda.
+- `> texto` → anotación escrita a mano, en azul, en su propia línea.
+- `~~texto~~` → tachado a mano. `<span class="circulo">texto</span>` → rodeado con un círculo.
 - `<mark>texto</mark>` → subrayado con fosforito.
 - `<div class="nota">…</div>` → nota amarilla con clip.
 - Bloques de código con ```` ``` ```` → ficha pegada con cinta (con colores).

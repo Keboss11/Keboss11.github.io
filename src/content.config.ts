@@ -37,6 +37,7 @@ const entradas = defineCollection({
       clima: z.string().optional(),
       material: z.array(z.string()).default([]),
       aprendido: z.array(z.string()).default([]),
+      notas: z.array(z.string()).default([]),
       boceto: image().optional(),
       pieBoceto: z.string().optional(),
       borrador: z.boolean().default(false),

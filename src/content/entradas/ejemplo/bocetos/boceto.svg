@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 160" font-family="Caveat, cursive" font-size="18" fill="none" stroke="#2e2a24" stroke-width="1.8" stroke-linecap="round">
+  <path d="M8 20 L100 17 L102 62 L10 64Z"/><text x="22" y="46" fill="#2e2a24" stroke="none">Markdown</text>
+  <path d="M128 18 L214 20 L212 64 L126 62Z"/><text x="148" y="46" fill="#2e2a24" stroke="none">Astro</text>
+  <path d="M128 98 L230 96 L232 142 L130 144Z" stroke-dasharray="5 4"/><text x="138" y="126" fill="#2e2a24" stroke="none">GitHub Pages</text>
+  <path d="M102 40 C 112 38, 116 42, 126 40 M120 35 l6 5 l-6 5"/>
+  <path d="M170 64 C 168 76, 172 84, 170 96 M164 90 l6 6 l6 -6"/>
+  <text x="232" y="40" fill="#2f5a8f" stroke="none" font-size="16">← npm run build</text>
+  <text x="250" y="122" fill="#2f5a8f" stroke="none" font-size="16">← git push</text>
+</svg>
