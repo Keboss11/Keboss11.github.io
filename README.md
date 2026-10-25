@@ -26,7 +26,7 @@ Las imágenes pueden ir junto al Markdown (rutas relativas, `./fotos/x.png`) o e
 
 ### Ejemplo completo
 
-En `src/content/expediciones/ejemplo.md` y `src/content/entradas/ejemplo/01-anatomia-de-una-entrada.md` hay una expedición y un post de ejemplo que explican cada elemento y cómo se escribe. Están como `borrador: true`, así que solo se ven con `npm run dev`. Cópialos como punto de partida y bórralos cuando ya no te hagan falta.
+En `src/content/expediciones/ejemplo.md` y `src/content/entradas/ejemplo/01-anatomia-de-una-entrada.md` hay una expedición y un post de ejemplo que explican cada elemento y cómo se escribe. Están publicados en la web. Cópialos como punto de partida y bórralos cuando ya no te hagan falta.
 
 ### Elementos de cuaderno dentro del Markdown
 

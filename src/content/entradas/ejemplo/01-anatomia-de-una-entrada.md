@@ -21,7 +21,7 @@ aprendido:
 notas:
   - Esto es «notas» — anotaciones sueltas para la página izquierda, cada una con su flecha.
   - Úsalas para comentarios que no encajan en el texto.
-borrador: true
+borrador: false
 ---
 
 Esto es un **párrafo normal**. Todo lo que escribas en el archivo después del bloque de datos aparece en esta página derecha. La página izquierda se rellena sola con los datos del principio: la cabecera con número, fecha, lugar y clima, el material, el boceto, lo aprendido y las notas.

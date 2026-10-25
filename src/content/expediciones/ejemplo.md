@@ -1,7 +1,7 @@
 ---
 # EXPEDICIÓN DE EJEMPLO
 # Cópiala, cambia los textos y tendrás tu primer proyecto.
-# Con borrador: true solo se ve en local (npm run dev), nunca en la web.
+# Con borrador: true solo se vería en local (npm run dev), no en la web.
 
 titulo: Expedición de ejemplo
 habitat: Plantilla
@@ -16,7 +16,7 @@ pieFoto: esto es «pieFoto»
 pendientes:
   - Esto es un «pendiente»
   - Las entradas que aún no has escrito
-borrador: true
+borrador: false
 ---
 
 Esto es la **descripción de la expedición**: todo lo que escribas debajo del bloque de datos del archivo. Aparece aquí, en la página derecha, justo debajo del título. Cuéntala en dos o tres frases: qué es el proyecto y por qué lo empezaste.
