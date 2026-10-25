@@ -36,6 +36,9 @@ function cara(clase: string, elementos: HTMLElement[]) {
   for (const el of elementos) {
     const c = el.cloneNode(true) as HTMLElement;
     c.removeAttribute('id');
+    // recuerda hasta dónde estaba leída la página para que la hoja gire tal cual
+    const scroll = el.querySelector('.pc')?.scrollTop ?? 0;
+    if (scroll) (c.querySelector('.pc') as HTMLElement).dataset.scroll = String(scroll);
     f.append(c);
   }
   const sombra = document.createElement('i');
@@ -48,7 +51,9 @@ function hoja(sobre: HTMLElement, origen: 'left' | 'right', frente: HTMLElement,
   const leaf = document.createElement('div');
   leaf.className = 'leaf';
   const top = pages.getBoundingClientRect().top;
-  const alto = Math.min(pages.clientHeight - sobre.offsetTop * 2, Math.max(innerHeight - top, 400));
+  // con scroll por página la hoja mide lo mismo que la página; si no, lo que se ve en pantalla
+  const scrollPropio = getComputedStyle(sobre.querySelector('.pc') ?? sobre).overflowY === 'auto';
+  const alto = scrollPropio ? sobre.offsetHeight : Math.min(pages.clientHeight - sobre.offsetTop * 2, Math.max(innerHeight - top, 400));
   Object.assign(leaf.style, {
     left: `${sobre.offsetLeft}px`, top: `${sobre.offsetTop}px`,
     width: `${sobre.offsetWidth}px`, height: `${alto}px`,
@@ -56,6 +61,7 @@ function hoja(sobre: HTMLElement, origen: 'left' | 'right', frente: HTMLElement,
   });
   leaf.append(frente, dorso);
   pages.append(leaf);
+  leaf.querySelectorAll<HTMLElement>('[data-scroll]').forEach((pc) => { pc.scrollTop = Number(pc.dataset.scroll); });
   return leaf;
 }
 
