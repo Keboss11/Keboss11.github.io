@@ -255,16 +255,14 @@ pre.codigo code { background: none; padding: 0; font: inherit; }
   .help { margin: 0 0 10px; font-size: 18px; }
 }
 
-/* ---------- pantalla ancha: libro más ancho y las notas al margen salen del texto a su propia columna ---------- */
-@media (min-width: 1400px) and (min-height: 560px) {
+/* ---------- pantalla ancha: libro más ancho, texto centrado en la página derecha y una columna de notas a cada lado ---------- */
+@media (min-width: 1500px) and (min-height: 560px) {
   .top, .stage { max-width: 1640px; }
-  .page.right .prose { margin-right: 210px; }
-  .page.right .margen.derecha, .page.right .margen.izquierda {
-    float: right; clear: right; width: 185px; margin: 4px -210px 16px 0; padding: 0 0 0 12px;
-    border-right: 0; border-left: 2px solid var(--tinta); text-align: left; transform: rotate(1.5deg);
-  }
-  .page.right .margen.izquierda::after { content: ""; }
-  .page.right .margen.izquierda::before { content: "⟵ "; }
+  .page.right .pc { padding-left: 30px; padding-right: 30px; }
+  .page.right .prose { margin: 0 150px; }
+  .page.right .margen { width: 132px; font-size: 19px; }
+  .page.right .margen.derecha { clear: right; margin: 4px -150px 16px 0; }
+  .page.right .margen.izquierda { clear: left; margin: 4px 0 16px -150px; }
   /* ya no hay notas flotando dentro del texto, así que los bloques no tienen que saltarlas */
   .page.right .prose :is(h2, h3, pre, .nota, hr, img, figure, foto-polaroid, video-campo) { clear: none; }
 }
