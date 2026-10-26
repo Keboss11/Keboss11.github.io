@@ -56,7 +56,8 @@ definir('foto-polaroid', class extends Componente {
 // <video-campo src="/videos/x.mp4" pie="Pie" vertical></video-campo>   vídeo propio
 // <video-campo youtube="dQw4w9WgXcQ" pie="Pie"></video-campo>          vídeo de YouTube
 // <video-campo pie="Pie" vertical></video-campo>                       hueco «vídeo pendiente»
-// vertical → formato móvil (9:16); sin él, 16:9. poster="/img/x.png" pone una portada al vídeo propio.
+// vertical → marco de móvil (9:16); sin él, 16:9. Un vídeo vertical en marco horizontal sale con bandas negras.
+// poster="/img/x.png" pone una portada al vídeo propio.
 definir('video-campo', class extends Componente {
   pintar() {
     const pie = this.getAttribute('pie');

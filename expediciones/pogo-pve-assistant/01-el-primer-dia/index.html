@@ -20,14 +20,13 @@
         <li>Kotlin + Jetpack Compose</li>
         <li>Retrofit + kotlinx.serialization</li>
         <li>pogo-data-api (WatWowMap)</li>
-        <li>5 commits, de 15:13 a 21:05</li>
       </lista-material>
 
       <titulo-seccion>EN VÍDEO</titulo-seccion>
       <video-campo pie="el primer día, en vídeo" vertical></video-campo>
 
       <titulo-seccion>ASÍ SE VEÍA</titulo-seccion>
-      <foto-polaroid src="/img/pogo-pve-assistant/dia1-formulario.png" pie="14.09, 21:05" giro="-2"></foto-polaroid>
+      <foto-polaroid src="/img/pogo-pve-assistant/dia1-formulario.png" pie="al final del día" giro="-2"></foto-polaroid>
 
       <titulo-seccion>LO APRENDIDO</titulo-seccion>
       <lista-aprendido>
@@ -41,21 +40,17 @@
       <encabezado-entrada></encabezado-entrada>
 
       <article class="prose">
-        <h2>De dónde sale la idea</h2>
-        <p>Cuando volví a jugar a Pokémon GO me encontré con una cantidad de Pokémon enorme. Quería progresar, sobre todo en las incursiones, y empecé a mirar los rankings que hay en internet: cuáles son los mejores atacantes de cada tipo.</p>
-        <nota-margen lado="derecha" tinta="roja">Si no lo tengo, ¿de qué me sirve?</nota-margen>
-        <p>Pero no me bastaban. Esos rankings hablan del juego entero, no de mi cuenta. <mark>De nada me sirve saber que Kyurem Blanco es el n.º 1 de tipo hielo si no lo tengo.</mark> Lo que yo necesitaba saber era otra cosa: de los Pokémon que tengo, ¿cuáles son los mejores? ¿Y en cuáles merece la pena gastar el polvo estelar y los caramelos que tengo?</p>
-        <p>Es decir, algo que se ajustase a mi colección y a mis recursos. No lo encontré, así que decidí hacerlo.</p>
-
-        <h2>El primer paso</h2>
-        <p>El 14 de septiembre abrí Android Studio. Antes de comparar mis Pokémon con nada, la app tenía que saber cuáles eran. Así que el primer día fue solo eso: decirle a la app «este es mi Pokémon». Buscarlo, elegir sus ataques y escribir sus IV y su nivel.</p>
+        <p>La idea era que la app me dijera cuáles de <em>mis</em> Pokémon son los mejores y en cuáles merece la pena gastar mis recursos (lo cuento en la <a href="/expediciones/pogo-pve-assistant/">portada</a>). Pero antes de comparar mis Pokémon con nada, la app tenía que saber cuáles eran.</p>
+        <p>El 14 de septiembre abrí Android Studio y el primer día fue solo eso: decirle a la app «este es mi Pokémon». Buscarlo, elegir sus ataques y escribir sus IV y su nivel.</p>
 
         <h2>Primero las funcionalidades</h2>
-        <nota-margen lado="derecha">Compárala con la portada de la expedición: la misma pantalla, seis semanas después.</nota-margen>
         <p>La primera versión no tiene diseño ninguno. Es el tema por defecto de Material, campos de texto uno debajo de otro y botones que abren listas. Fue a propósito: <mark>quería comprobar que la idea funcionaba antes de dedicar tiempo a que se viera bien</mark>. Los colores, los sprites y las pestañas llegaron tres semanas después, cuando ya sabía qué pantallas iba a necesitar.</p>
 
         <nota-margen lado="derecha" tinta="lapiz">El título se monta sobre la barra de estado: <code>enableEdgeToEdge()</code> sin márgenes. Nadie lo arregló ese día.</nota-margen>
         <foto-polaroid src="/img/pogo-pve-assistant/dia1-buscador.png" pie="lo primero que veías" giro="2"></foto-polaroid>
+
+        <nota-margen lado="derecha">La misma pantalla, seis semanas después.</nota-margen>
+        <foto-polaroid src="/img/pogo-pve-assistant/hoy-buscador.png" pie="y hoy (v1.28)" giro="-2"></foto-polaroid>
 
         <nota-margen lado="derecha" tinta="roja">El botón «Analizar» no enseña nada todavía. Eso llegó al día siguiente.</nota-margen>
         <p>Lo que se podía hacer al acabar el día:</p>
@@ -68,17 +63,7 @@
 
         <foto-polaroid src="/img/pogo-pve-assistant/dia1-ataques.png" pie="eligiendo el ataque cargado" giro="-1"></foto-polaroid>
 
-        <h2>Cinco commits</h2>
-        <table>
-          <tr><th>Hora</th><th>Commit</th><th>Qué hizo</th></tr>
-          <tr><td>15:13</td><td>Initial project setup</td><td>El proyecto Compose y los primeros modelos</td></tr>
-          <tr><td>16:20</td><td>Obtener pokemon</td><td>Primeros datos reales y la primera pantalla</td></tr>
-          <tr><td>20:35</td><td>Add Pokemon move data</td><td>Los ataques rápidos y cargados</td></tr>
-          <tr><td>20:54</td><td>Improve analysis input</td><td>Buscador por nombre y selector de ataques</td></tr>
-          <tr><td>21:05</td><td>Improve analysis input</td><td>El formulario completo con validaciones</td></tr>
-        </table>
-
-        <p>Un detalle que me gusta: en el primer commit, antes de tener ni un dato real, ya existía este modelo.</p>
+        <p>Un detalle que me gusta: antes de tener ni un dato real, ya existía este modelo.</p>
 
         <bloque-codigo lenguaje="kotlin" archivo="domain/model/PveBuild.kt"><script type="text/plain">
           data class PveBuild(

@@ -14,17 +14,25 @@
   <cuaderno-libro>
     <pagina-izquierda>
       <campos-expedicion></campos-expedicion>
-      <foto-polaroid src="/img/pogo-pve-assistant/hoy-buscador.png" pie="la app hoy (v1.28)"></foto-polaroid>
+      <!-- src="/videos/pogo-pve-assistant/x.mp4" o youtube="ID" cuando esté el vídeo -->
+      <video-campo pie="la app, en vídeo"></video-campo>
       <ficha-especimen material="Kotlin, Jetpack Compose, Room, Retrofit"></ficha-especimen>
       <sello-estado></sello-estado>
-      <nota-flecha style="margin-top:22px">objetivo: saber en qué Pokémon merece la pena gastar polvo y caramelos para las incursiones</nota-flecha>
     </pagina-izquierda>
 
     <pagina-derecha>
       <encabezado-expedicion></encabezado-expedicion>
       <article class="prose">
-        <p><strong>PoGo PvE Assistant</strong> es una app Android para preparar las incursiones (el PvE) de Pokémon GO. Los rankings de internet te dicen cuáles son los mejores Pokémon del juego; esta app te dice <mark>cuáles son los mejores de tu colección</mark> y en cuáles merece la pena gastar tus recursos. También qué equipo llevar contra cada jefe y qué eventos te interesan.</p>
-        <p>La empecé el 14 de septiembre de 2026. En seis semanas pasó de un formulario sin diseño a la versión 1.28, con 128 commits por el camino. En esta expedición cuento cómo se construyó, funcionalidad a funcionalidad y en el orden en que se hizo.</p>
+        <p><strong>PoGo PvE Assistant</strong> es una app Android para preparar las incursiones (el PvE) de Pokémon GO. Te dice cuáles son los mejores Pokémon de tu colección, en cuáles merece la pena gastar tus recursos, qué equipo llevar contra cada jefe y qué eventos te interesan.</p>
+
+        <h2>De dónde sale la idea</h2>
+        <p>Cuando volví a jugar a Pokémon GO me encontré con una cantidad de Pokémon enorme. Quería progresar, sobre todo en las incursiones, y empecé a mirar los rankings que hay en internet: cuáles son los mejores atacantes de cada tipo.</p>
+        <nota-margen lado="derecha" tinta="roja">Si no lo tengo, ¿de qué me sirve?</nota-margen>
+        <p>Pero no me bastaban. Esos rankings hablan del juego entero, no de mi cuenta. <mark>De nada me sirve saber que Kyurem Blanco es el n.º 1 de tipo hielo si no lo tengo.</mark> Lo que yo necesitaba saber era otra cosa: de los Pokémon que tengo, ¿cuáles son los mejores? ¿Y en cuáles merece la pena gastar el polvo estelar y los caramelos que tengo?</p>
+        <p>Es decir, algo que se ajustase a mi colección y a mis recursos. No lo encontré, así que decidí hacerlo.</p>
+
+        <h2>La expedición</h2>
+        <p>La empecé el 14 de septiembre de 2026. En seis semanas pasó de un formulario sin diseño a la versión 1.28. Aquí cuento cómo se construyó, funcionalidad a funcionalidad y en el orden en que se hizo.</p>
         <nota-margen lado="derecha" tinta="lapiz">El lector de pantalla lo dejo para el final, aunque nació a mitad del proyecto.</nota-margen>
         <p>Cada entrada cubre una funcionalidad completa, desde que nace hasta cómo está hoy.</p>
       </article>
