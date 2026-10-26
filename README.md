@@ -61,6 +61,8 @@ La expedición `ejemplo` y su entrada `01-anatomia-de-una-entrada` explican cada
 <nota-clip titulo="¡OJO!">Nota amarilla con clip</nota-clip>
 <foto-polaroid src="/img/x.png" pie="Pie de foto" giro="-3"></foto-polaroid>
 <div class="duo"> dos <foto-polaroid> una al lado de la otra </div>
+<foto-pegatina src="/img/x.png" pie="Pie" giro="-5"></foto-pegatina>  <!-- PNG sin fondo, sin marco y con borde de pegatina -->
+<div class="pegatinas"> varias <foto-pegatina> en fila, también en el móvil </div>
 <video-campo src="/videos/x.mp4" pie="Pie" vertical></video-campo>  <!-- o youtube="ID"; sin ninguno, hueco «vídeo pendiente» -->
 <boceto-dibujo src="/img/x.svg" pie="Fig. 1 — …"></boceto-dibujo>
 

@@ -40,6 +40,19 @@ definir('foto-polaroid', class extends Componente {
   }
 });
 
+// <foto-pegatina src="/img/x.png" pie="Pie" giro="-6"></foto-pegatina>
+// Para imágenes sin fondo (PNG transparente): sin marco, con borde blanco de pegatina.
+// <div class="pegatinas"> pone varias en fila, también en el móvil.
+definir('foto-pegatina', class extends Componente {
+  pintar() {
+    const pie = this.getAttribute('pie');
+    this.classList.add('pegatina');
+    if (this.hasAttribute('giro')) this.style.transform = `rotate(${parseFloat(this.getAttribute('giro'))}deg)`;
+    this.setAttribute('role', 'figure');
+    this.innerHTML = `<img src="${esc(this.getAttribute('src'))}" alt="${esc(this.getAttribute('alt') ?? pie ?? '')}" loading="lazy">${pie ? `<p>${esc(pie)}</p>` : ''}`;
+  }
+});
+
 // <video-campo src="/videos/x.mp4" pie="Pie" vertical></video-campo>   vídeo propio
 // <video-campo youtube="dQw4w9WgXcQ" pie="Pie"></video-campo>          vídeo de YouTube
 // <video-campo pie="Pie" vertical></video-campo>                       hueco «vídeo pendiente»

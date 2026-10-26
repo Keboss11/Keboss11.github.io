@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PoGo PvE Assistant · Mateo</title>
-  <meta name="description" content="Una app Android para preparar las incursiones de Pokémon GO: rankings, análisis de tus Pokémon, colección y planificador.">
+  <meta name="description" content="Un asistente de Pokémon GO personalizado a tu colección: cuáles de tus Pokémon son los mejores, en cuáles invertir y qué equipo llevar a cada incursión.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/estilos/web.css">
   <script src="/componentes/tema.js"></script>
@@ -19,16 +19,23 @@
       <li>Retrofit</li>
     </lista-material>
 
-    <p><strong>PoGo PvE Assistant</strong> es una app Android para preparar las incursiones (el PvE) de Pokémon GO. Te dice cuáles son los mejores Pokémon de tu colección, en cuáles merece la pena gastar tus recursos, qué equipo llevar contra cada jefe y qué eventos te interesan.</p>
+    <p><strong>PoGo PvE Assistant</strong> es un asistente de Pokémon GO personalizado a tu colección. No te dice cuáles son los mejores Pokémon del juego, sino cuáles son los mejores de <em>los tuyos</em>: en cuáles merece la pena gastar tus recursos, qué equipo llevar contra cada jefe de incursión y qué eventos te interesan.</p>
 
     <!-- src="/videos/pogo-pve-assistant/x.mp4" o youtube="ID" cuando esté el vídeo -->
     <video-campo pie="la app, en vídeo"></video-campo>
 
     <h2>De dónde sale la idea</h2>
-    <p>Cuando volví a jugar a Pokémon GO me encontré con una cantidad de Pokémon enorme. Quería progresar, sobre todo en las incursiones, y empecé a mirar los rankings que hay en internet: cuáles son los mejores atacantes de cada tipo.</p>
-    <nota-margen tinta="roja">Si no lo tengo, ¿de qué me sirve?</nota-margen>
-    <p>Pero no me bastaban. Esos rankings hablan del juego entero, no de mi cuenta. <mark>De nada me sirve saber que Kyurem Blanco es el n.º 1 de tipo hielo si no lo tengo.</mark> Lo que yo necesitaba saber era otra cosa: de los Pokémon que tengo, ¿cuáles son los mejores? ¿Y en cuáles merece la pena gastar el polvo estelar y los caramelos que tengo?</p>
-    <p>Es decir, algo que se ajustase a mi colección y a mis recursos. No lo encontré, así que decidí hacerlo.</p>
+    <p>Desde que me echaron de mi empresa en un ERE, empecé a dar paseos por mi pueblo y a apreciar el campo, o lo que queda de él. Y con los paseos volvió el vicio: Pokémon GO.</p>
+    <p>Para quien no lo conozca: Pokémon GO no va solo de capturar Pokémon. La gran mayoría del juego sí, pero también tiene una parte de combates contra la máquina, el <strong>PvE</strong>, con las incursiones como plato fuerte. Y ahí estaba perdido: después de tantos años desconectado, no sabía qué Pokémon eran buenos y cuáles no.</p>
+    <p>Vi unos cuantos vídeos y rankings en internet y me di cuenta de que no me servían. <mark>¿Para qué quiero saberme el top 10 si son todos legendarios que no tengo ni parece que vaya a tener pronto?</mark> Muy sencillo, y no os voy a hacer un trivial: para absolutamente nada.</p>
+
+    <nota-margen tinta="roja">Está guapo, pero ¿qué tan bueno es mi Pokémon comparado con este que no tengo?</nota-margen>
+    <div class="pegatinas">
+      <foto-pegatina src="/img/pogo-pve-assistant/kyurem-blanco.png" pie="Kyurem Blanco, el que no tengo" giro="-5"></foto-pegatina>
+      <foto-pegatina src="/img/pogo-pve-assistant/darmanitan-galar.png" pie="Darmanitan de Galar, el mío" giro="4"></foto-pegatina>
+    </div>
+    <p>Luego recordé que hay aplicaciones que te ayudan a saber si un Pokémon es bueno, pero solo miran los números de ese Pokémon en concreto, y llevar el control de tu colección con ellas era bastante incómodo.</p>
+    <p>Y pensé: jo, si la puedo hacer yo. Tenía todo lo necesario: ganas, un portátil y tiempo libre, que no todo va a ser jugar al Counter.</p>
 
     <h2>La expedición</h2>
     <p>La empecé el 14 de septiembre de 2026. En seis semanas pasó de un formulario sin diseño a la versión 1.28. Aquí cuento cómo se construyó, funcionalidad a funcionalidad y en el orden en que se hizo.</p>
