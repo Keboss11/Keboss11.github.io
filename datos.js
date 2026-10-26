@@ -1,22 +1,20 @@
 // ─────────────────────────────────────────────────────────────
-//  DATOS DEL CUADERNO
+//  DATOS DE LA WEB
 //  Aquí se apunta qué expediciones (proyectos) y entradas (posts)
-//  existen. Con esto se montan el índice, el registro de cada
-//  expedición, el orden al pasar página y los números de página.
+//  existen. Con esto se montan el campamento, las listas, el
+//  sendero de cada expedición y la parada anterior/siguiente.
 //  El contenido de cada página está en su propio index.html.
 // ─────────────────────────────────────────────────────────────
 
 export const CUADERNO = {
   titulo: 'Cuaderno de campo',
-  numero: '01',
-  etiqueta: 'PROYECTOS', // texto grande de la tapa
   autor: 'Mateo',
   desde: '2026',
   presentacion: 'proyectos que hago por gusto y lo que aprendo haciéndolos.',
   contacto: { texto: 'github.com/Keboss11', url: 'https://github.com/Keboss11' },
 };
 
-// El orden de esta lista es el orden del cuaderno.
+// El orden de esta lista es el orden en que salen los proyectos.
 // Cada expedición vive en /expediciones/<id>/index.html
 // y cada entrada en /expediciones/<id>/<id-entrada>/index.html
 // borrador: true → solo se ve en local (localhost), no en la web.

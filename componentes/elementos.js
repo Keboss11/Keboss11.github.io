@@ -1,24 +1,11 @@
-// Elementos de cuaderno que se usan dentro de las páginas.
-import { Componente, definir, donde, estado, esc, FLECHA, SUBRAYADO, BRUJULA } from './base.js';
+// Elementos que se usan dentro de los posts y de las páginas de proyecto.
+import { Componente, definir, donde, estado, esc, FLECHA } from './base.js';
 
-// <titulo-pagina>Texto</titulo-pagina>  (añade "pequeno" para títulos largos)
-definir('titulo-pagina', class extends Componente {
-  pintar() {
-    const estilo = this.hasAttribute('pequeno') ? ' style="font-size:clamp(36px,3.8vw,48px)"' : '';
-    this.innerHTML = `<h1 class="title"${estilo}>${this.innerHTML}</h1>${SUBRAYADO}`;
-  }
-});
-
-// <titulo-seccion>MATERIAL</titulo-seccion>
-definir('titulo-seccion', class extends Componente {
-  pintar() { this.innerHTML = `<h3 class="tw">${this.innerHTML}</h3>`; }
-});
-
-// <nota-margen lado="derecha|izquierda" tinta="azul|roja|lapiz">texto</nota-margen>
+// <nota-margen tinta="azul|roja|lapiz">texto</nota-margen>
+// Va justo antes del párrafo al que acompaña. En pantallas anchas sale en la columna de la derecha.
 definir('nota-margen', class extends Componente {
   pintar() {
-    const lado = this.getAttribute('lado') === 'izquierda' ? 'izquierda' : 'derecha';
-    this.classList.add('margen', lado);
+    this.classList.add('margen');
     const tinta = this.getAttribute('tinta');
     if (tinta === 'roja' || tinta === 'lapiz') this.classList.add(tinta);
     this.setAttribute('role', 'note');
@@ -88,22 +75,6 @@ definir('boceto-dibujo', class extends Componente {
   }
 });
 
-// <ficha-especimen material="Kotlin, Compose"></ficha-especimen>
-// titulo y habitat salen de datos.js si no los pones
-definir('ficha-especimen', class extends Componente {
-  pintar() {
-    const { exp } = donde();
-    const titulo = this.getAttribute('titulo') ?? exp?.titulo ?? '';
-    const habitat = this.getAttribute('habitat') ?? exp?.habitat ?? '';
-    const material = this.getAttribute('material');
-    this.innerHTML = `<div class="specimen"><dl>
-      <dt>ESPÉCIMEN</dt><dd>${esc(titulo)}</dd>
-      ${habitat ? `<dt>HÁBITAT</dt><dd>${esc(habitat)}</dd>` : ''}
-      ${material ? `<dt>MATERIAL</dt><dd>${esc(material)}</dd>` : ''}
-    </dl></div>`;
-  }
-});
-
 // <sello-estado></sello-estado>  (o estado="terminado" para forzarlo)
 definir('sello-estado', class extends Componente {
   pintar() {
@@ -112,27 +83,19 @@ definir('sello-estado', class extends Componente {
   }
 });
 
-// <lista-material><li>…</li></lista-material>   → casillas marcadas
+// <lista-material><li>…</li></lista-material>   → tarjeta «En la mochila»
+const MOCHILA = '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="12" width="28" height="32" rx="8" fill="#c8673b"/><rect x="15" y="26" width="18" height="12" rx="3" fill="#a24f2c"/><path d="M18 12 v-4 a6 6 0 0 1 12 0 v4" fill="none" stroke="#7a3a1f" stroke-width="3"/></svg>';
 definir('lista-material', class extends Componente {
-  pintar() { this.innerHTML = `<ul class="check">${this.innerHTML}</ul>`; }
-});
-
-// <lista-aprendido><li>…</li></lista-aprendido>  → apuntes a mano
-definir('lista-aprendido', class extends Componente {
-  pintar() { this.innerHTML = `<ul class="learned">${this.innerHTML}</ul>`; }
-});
-
-// <leyenda-estados></leyenda-estados>
-definir('leyenda-estados', class extends Componente {
   pintar() {
-    this.classList.add('legend');
-    this.innerHTML = `<h3 class="tw">LEYENDA</h3><ul>
-      <li><span class="sym">✓</span> expedición terminada</li><li><span class="sym">~</span> en curso</li>
-      <li><span class="sym">‖</span> en pausa</li><li><span class="sym">○</span> por explorar</li></ul>`;
+    this.classList.add('mochila');
+    this.innerHTML = `${MOCHILA}<b>${esc(this.getAttribute('titulo') ?? 'EN LA MOCHILA')}</b><ul>${this.innerHTML}</ul>`;
   }
 });
 
-// <brujula-dibujo></brujula-dibujo>
-definir('brujula-dibujo', class extends Componente {
-  pintar() { this.innerHTML = BRUJULA(); }
+// <lista-aprendido><li>…</li></lista-aprendido>  → post-it «Lo aprendido»
+definir('lista-aprendido', class extends Componente {
+  pintar() {
+    this.classList.add('aprendido');
+    this.innerHTML = `<b>${esc(this.getAttribute('titulo') ?? 'LO APRENDIDO')}</b><ul>${this.innerHTML}</ul>`;
+  }
 });

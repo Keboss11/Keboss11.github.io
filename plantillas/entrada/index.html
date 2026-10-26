@@ -3,49 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Título de la entrada · Cuaderno de campo</title>
-  <meta name="description" content="Una frase sobre la entrada.">
+  <title>Título del post · Mateo</title>
+  <meta name="description" content="Una frase sobre el post.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="/estilos/cuaderno.css">
+  <link rel="stylesheet" href="/estilos/web.css">
   <script src="/componentes/tema.js"></script>
   <script type="module" src="/componentes/index.js"></script>
 </head>
 <body>
   <!--
-    PLANTILLA DE ENTRADA (post)
-    1. Apunta la entrada en /datos.js, dentro de su expedición
+    PLANTILLA DE POST
+    1. Apunta el post en /datos.js, dentro de su expedición
     2. Copia este archivo a /expediciones/<expedicion>/<id-entrada>/index.html
     Mira /expediciones/ejemplo/01-anatomia-de-una-entrada/ para ver todos los componentes.
   -->
-  <cuaderno-libro>
-    <pagina-izquierda>
-      <campos-entrada lugar="escritorio" clima="sol"></campos-entrada>
+  <pagina-web lugar="el escritorio" clima="sol">
+    <lista-material>
+      <li>Herramienta</li>
+    </lista-material>
 
-      <titulo-seccion>MATERIAL</titulo-seccion>
-      <lista-material>
-        <li>Herramienta</li>
-      </lista-material>
+    <p>Empieza aquí.</p>
 
-      <titulo-seccion>EN VÍDEO</titulo-seccion>
-      <!-- src="/videos/<id>/x.mp4" o youtube="ID". Sin ninguno sale el hueco «vídeo pendiente». -->
-      <video-campo pie="Pie del vídeo" vertical></video-campo>
+    <!-- src="/videos/<id>/x.mp4" o youtube="ID". Sin ninguno sale el hueco «vídeo pendiente». -->
+    <video-campo pie="Pie del vídeo" vertical></video-campo>
 
-      <titulo-seccion>LO APRENDIDO</titulo-seccion>
-      <lista-aprendido>
-        <li>Algo que aprendiste</li>
-      </lista-aprendido>
-    </pagina-izquierda>
+    <h2>Un apartado</h2>
+    <p>Más texto.</p>
 
-    <pagina-derecha>
-      <encabezado-entrada></encabezado-entrada>
-      <article class="prose">
-        <p>Empieza aquí.</p>
-
-        <h2>Un apartado</h2>
-        <p>Más texto.</p>
-      </article>
-      <navegacion-entradas></navegacion-entradas>
-    </pagina-derecha>
-  </cuaderno-libro>
+    <lista-aprendido>
+      <li>Algo que aprendiste</li>
+    </lista-aprendido>
+  </pagina-web>
 </body>
 </html>

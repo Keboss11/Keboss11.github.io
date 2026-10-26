@@ -3,26 +3,45 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cuaderno de campo</title>
+  <title>Mateo · Cuaderno de campo</title>
   <meta name="description" content="Cuaderno de campo con mis proyectos personales y cómo los construyo, paso a paso.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="/estilos/cuaderno.css">
+  <link rel="stylesheet" href="/estilos/web.css">
   <script src="/componentes/tema.js"></script>
   <script type="module" src="/componentes/index.js"></script>
 </head>
 <body>
-  <cuaderno-libro>
-    <pagina-izquierda>
-      <campos-cuaderno></campos-cuaderno>
-      <ficha-propietario></ficha-propietario>
-      <leyenda-estados></leyenda-estados>
-      <brujula-dibujo></brujula-dibujo>
-    </pagina-izquierda>
+  <pagina-web>
+    <lobby-campamento></lobby-campamento>
 
-    <pagina-derecha>
-      <indice-expediciones></indice-expediciones>
-      <ultimas-entradas></ultimas-entradas>
-    </pagina-derecha>
-  </cuaderno-libro>
+    <section class="seccion" id="sobre-mi">
+      <div class="titulo aparece"><h2>Sobre mí</h2><span>el de la hoguera</span></div>
+      <div class="sobre">
+        <figure class="retrato aparece">
+          <div class="foto"><img src="/img/sobre-mi/caricatura.webp" alt="Caricatura de Mateo programando con el portátil, con un Gliscor en la cabeza"></div>
+          <figcaption>yo (y Gliscor)</figcaption>
+        </figure>
+        <div class="aparece">
+          <p>Hola, soy <strong>Mateo</strong>. Este es mi cuaderno de campo: proyectos que hago por gusto y lo que aprendo haciéndolos.</p>
+          <p>Cada proyecto es una expedición, y cada post cuenta un tramo del camino: qué intenté, qué salió mal y qué aprendí.</p>
+          <p><a href="https://github.com/Keboss11">github.com/Keboss11</a></p>
+        </div>
+        <aside class="aparece">
+          <nota-margen>las notas a mano como esta también salen en los posts</nota-margen>
+          <nota-margen tinta="roja">Gliscor viene incluido</nota-margen>
+        </aside>
+      </div>
+    </section>
+
+    <section class="seccion" id="proyectos">
+      <div class="titulo aparece"><h2>Proyectos</h2><span>expediciones</span></div>
+      <lista-proyectos></lista-proyectos>
+    </section>
+
+    <section class="seccion" id="posts">
+      <div class="titulo aparece"><h2>Últimos posts</h2><span>del cuaderno</span></div>
+      <ultimos-posts cuantas="5"></ultimos-posts>
+    </section>
+  </pagina-web>
 </body>
 </html>

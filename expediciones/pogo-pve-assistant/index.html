@@ -3,42 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PoGo PvE Assistant · Cuaderno de campo</title>
+  <title>PoGo PvE Assistant · Mateo</title>
   <meta name="description" content="Una app Android para preparar las incursiones de Pokémon GO: rankings, análisis de tus Pokémon, colección y planificador.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="/estilos/cuaderno.css">
+  <link rel="stylesheet" href="/estilos/web.css">
   <script src="/componentes/tema.js"></script>
   <script type="module" src="/componentes/index.js"></script>
 </head>
 <body>
-  <cuaderno-libro>
-    <pagina-izquierda>
-      <campos-expedicion></campos-expedicion>
-      <!-- src="/videos/pogo-pve-assistant/x.mp4" o youtube="ID" cuando esté el vídeo -->
-      <video-campo pie="la app, en vídeo"></video-campo>
-      <ficha-especimen material="Kotlin, Jetpack Compose, Room, Retrofit"></ficha-especimen>
-      <sello-estado></sello-estado>
-    </pagina-izquierda>
+  <pagina-web>
+    <lista-material titulo="EL EQUIPO">
+      <li>Kotlin</li>
+      <li>Jetpack Compose</li>
+      <li>Room</li>
+      <li>Retrofit</li>
+    </lista-material>
 
-    <pagina-derecha>
-      <encabezado-expedicion></encabezado-expedicion>
-      <article class="prose">
-        <p><strong>PoGo PvE Assistant</strong> es una app Android para preparar las incursiones (el PvE) de Pokémon GO. Te dice cuáles son los mejores Pokémon de tu colección, en cuáles merece la pena gastar tus recursos, qué equipo llevar contra cada jefe y qué eventos te interesan.</p>
+    <p><strong>PoGo PvE Assistant</strong> es una app Android para preparar las incursiones (el PvE) de Pokémon GO. Te dice cuáles son los mejores Pokémon de tu colección, en cuáles merece la pena gastar tus recursos, qué equipo llevar contra cada jefe y qué eventos te interesan.</p>
 
-        <h2>De dónde sale la idea</h2>
-        <p>Cuando volví a jugar a Pokémon GO me encontré con una cantidad de Pokémon enorme. Quería progresar, sobre todo en las incursiones, y empecé a mirar los rankings que hay en internet: cuáles son los mejores atacantes de cada tipo.</p>
-        <nota-margen lado="derecha" tinta="roja">Si no lo tengo, ¿de qué me sirve?</nota-margen>
-        <p>Pero no me bastaban. Esos rankings hablan del juego entero, no de mi cuenta. <mark>De nada me sirve saber que Kyurem Blanco es el n.º 1 de tipo hielo si no lo tengo.</mark> Lo que yo necesitaba saber era otra cosa: de los Pokémon que tengo, ¿cuáles son los mejores? ¿Y en cuáles merece la pena gastar el polvo estelar y los caramelos que tengo?</p>
-        <p>Es decir, algo que se ajustase a mi colección y a mis recursos. No lo encontré, así que decidí hacerlo.</p>
+    <!-- src="/videos/pogo-pve-assistant/x.mp4" o youtube="ID" cuando esté el vídeo -->
+    <video-campo pie="la app, en vídeo"></video-campo>
 
-        <h2>La expedición</h2>
-        <p>La empecé el 14 de septiembre de 2026. En seis semanas pasó de un formulario sin diseño a la versión 1.28. Aquí cuento cómo se construyó, funcionalidad a funcionalidad y en el orden en que se hizo.</p>
-        <nota-margen lado="derecha" tinta="lapiz">El lector de pantalla lo dejo para el final, aunque nació a mitad del proyecto.</nota-margen>
-        <p>Cada entrada cubre una funcionalidad completa, desde que nace hasta cómo está hoy.</p>
-      </article>
-      <p><a href="https://github.com/Keboss11/PokemonGoAssistant" class="hand" style="font-size:22px">→ ver el código</a></p>
-      <registro-expedicion></registro-expedicion>
-    </pagina-derecha>
-  </cuaderno-libro>
+    <h2>De dónde sale la idea</h2>
+    <p>Cuando volví a jugar a Pokémon GO me encontré con una cantidad de Pokémon enorme. Quería progresar, sobre todo en las incursiones, y empecé a mirar los rankings que hay en internet: cuáles son los mejores atacantes de cada tipo.</p>
+    <nota-margen tinta="roja">Si no lo tengo, ¿de qué me sirve?</nota-margen>
+    <p>Pero no me bastaban. Esos rankings hablan del juego entero, no de mi cuenta. <mark>De nada me sirve saber que Kyurem Blanco es el n.º 1 de tipo hielo si no lo tengo.</mark> Lo que yo necesitaba saber era otra cosa: de los Pokémon que tengo, ¿cuáles son los mejores? ¿Y en cuáles merece la pena gastar el polvo estelar y los caramelos que tengo?</p>
+    <p>Es decir, algo que se ajustase a mi colección y a mis recursos. No lo encontré, así que decidí hacerlo.</p>
+
+    <h2>La expedición</h2>
+    <p>La empecé el 14 de septiembre de 2026. En seis semanas pasó de un formulario sin diseño a la versión 1.28. Aquí cuento cómo se construyó, funcionalidad a funcionalidad y en el orden en que se hizo.</p>
+    <nota-margen tinta="lapiz">El lector de pantalla lo dejo para el final, aunque nació a mitad del proyecto.</nota-margen>
+    <p>Cada entrada cubre una funcionalidad completa, desde que nace hasta cómo está hoy.</p>
+
+    <p><a class="codigo-link" href="https://github.com/Keboss11/PokemonGoAssistant">→ ver el código</a></p>
+    <registro-expedicion></registro-expedicion>
+  </pagina-web>
 </body>
 </html>

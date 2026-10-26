@@ -1,5 +1,6 @@
-// Punto de entrada: carga todos los componentes del cuaderno.
+// Punto de entrada: carga todos los componentes de la web.
 import './elementos.js';
 import './listas.js';
 import './codigo.js';
-import './libro.js';
+import './lobby.js';
+import './pagina.js';
