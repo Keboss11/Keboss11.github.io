@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>El primer día · Cuaderno de campo</title>
+  <meta name="description" content="Primero las funcionalidades, después el diseño: lo que hice el primer día de PoGo PvE Assistant y cómo separé la app en capas.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/estilos/cuaderno.css">
+  <script src="/componentes/tema.js"></script>
+  <script type="module" src="/componentes/index.js"></script>
+</head>
+<body>
+  <cuaderno-libro>
+    <pagina-izquierda>
+      <campos-entrada lugar="escritorio" clima="domingo de septiembre"></campos-entrada>
+
+      <titulo-seccion>MATERIAL</titulo-seccion>
+      <lista-material>
+        <li>Kotlin + Jetpack Compose</li>
+        <li>Retrofit + kotlinx.serialization</li>
+        <li>pogo-data-api (WatWowMap)</li>
+        <li>5 commits, de 15:13 a 21:05</li>
+      </lista-material>
+
+      <titulo-seccion>ASÍ SE VEÍA</titulo-seccion>
+      <foto-polaroid src="/img/pogo-pve-assistant/dia1-formulario.png" pie="14.09, 21:05" giro="-2"></foto-polaroid>
+
+      <titulo-seccion>LO APRENDIDO</titulo-seccion>
+      <lista-aprendido>
+        <li>Primero que funcione, luego que sea bonito</li>
+        <li>Las capas cuestan poco al principio y mucho después</li>
+        <li>Pedir todo el JSON en cada letra no escala</li>
+      </lista-aprendido>
+
+      <titulo-seccion>NOTAS AL MARGEN</titulo-seccion>
+      <nota-flecha>El título se monta sobre la barra de estado: <code>enableEdgeToEdge()</code> sin márgenes. Nadie lo arregló ese día.</nota-flecha>
+      <nota-flecha>El botón «Analizar» no enseña nada todavía. Eso llegó al día siguiente.</nota-flecha>
+    </pagina-izquierda>
+
+    <pagina-derecha>
+      <encabezado-entrada></encabezado-entrada>
+
+      <article class="prose">
+        <h2>De dónde sale la idea</h2>
+        <p>Cuando volví a jugar a Pokémon GO me encontré con una cantidad de Pokémon enorme. Quería progresar, sobre todo en las incursiones, y empecé a mirar los rankings que hay en internet: cuáles son los mejores atacantes de cada tipo.</p>
+        <nota-margen lado="derecha" tinta="roja">Si no lo tengo, ¿de qué me sirve?</nota-margen>
+        <p>Pero no me bastaban. Esos rankings hablan del juego entero, no de mi cuenta. <mark>De nada me sirve saber que Kyurem Blanco es el n.º 1 de tipo hielo si no lo tengo.</mark> Lo que yo necesitaba saber era otra cosa: de los Pokémon que tengo, ¿cuáles son los mejores? ¿Y en cuáles merece la pena gastar el polvo estelar y los caramelos que tengo?</p>
+        <p>Es decir, algo que se ajustase a mi colección y a mis recursos. No lo encontré, así que decidí hacerlo.</p>
+
+        <video-campo pie="el primer día, en vídeo" vertical></video-campo>
+
+        <h2>El primer paso</h2>
+        <p>El 14 de septiembre abrí Android Studio. Antes de comparar mis Pokémon con nada, la app tenía que saber cuáles eran. Así que el primer día fue solo eso: decirle a la app «este es mi Pokémon». Buscarlo, elegir sus ataques y escribir sus IV y su nivel.</p>
+
+        <h2>Primero las funcionalidades</h2>
+        <nota-margen lado="derecha">Compárala con la portada de la expedición: la misma pantalla, seis semanas después.</nota-margen>
+        <p>La primera versión no tiene diseño ninguno. Es el tema por defecto de Material, campos de texto uno debajo de otro y botones que abren listas. Fue a propósito: <mark>quería comprobar que la idea funcionaba antes de dedicar tiempo a que se viera bien</mark>. Los colores, los sprites y las pestañas llegaron tres semanas después, cuando ya sabía qué pantallas iba a necesitar.</p>
+
+        <foto-polaroid src="/img/pogo-pve-assistant/dia1-buscador.png" pie="lo primero que veías" giro="2"></foto-polaroid>
+
+        <p>Lo que se podía hacer al acabar el día:</p>
+        <ul>
+          <li>Buscar un Pokémon por su nombre.</li>
+          <li>Ver su tipo y elegir uno de sus ataques rápidos y uno de sus ataques cargados.</li>
+          <li>Escribir sus IV (ataque, defensa y PS), su nivel y marcar si es oscuro.</li>
+          <li>Validar todo eso: «Los IV deben estar entre 0 y 15», «Selecciona un movimiento rápido»…</li>
+        </ul>
+
+        <foto-polaroid src="/img/pogo-pve-assistant/dia1-ataques.png" pie="eligiendo el ataque cargado" giro="-1"></foto-polaroid>
+
+        <h2>Cinco commits</h2>
+        <table>
+          <tr><th>Hora</th><th>Commit</th><th>Qué hizo</th></tr>
+          <tr><td>15:13</td><td>Initial project setup</td><td>El proyecto Compose y los primeros modelos</td></tr>
+          <tr><td>16:20</td><td>Obtener pokemon</td><td>Primeros datos reales y la primera pantalla</td></tr>
+          <tr><td>20:35</td><td>Add Pokemon move data</td><td>Los ataques rápidos y cargados</td></tr>
+          <tr><td>20:54</td><td>Improve analysis input</td><td>Buscador por nombre y selector de ataques</td></tr>
+          <tr><td>21:05</td><td>Improve analysis input</td><td>El formulario completo con validaciones</td></tr>
+        </table>
+
+        <p>Un detalle que me gusta: en el primer commit, antes de tener ni un dato real, ya existía este modelo.</p>
+
+        <bloque-codigo lenguaje="kotlin" archivo="domain/model/PveBuild.kt"><script type="text/plain">
+          data class PveBuild(
+              val pokemonId: Int,
+              val fastMoveId: Int,
+              val chargedMoveId: Int,
+              val rank: Int,
+              val dps: Double,
+              val tdo: Double,
+              // …
+          )
+        </script></bloque-codigo>
+
+        <p><code>rank</code>, <code>dps</code>, <code>tdo</code>: la idea de comparar tus Pokémon con los rankings estaba desde el minuto uno, aunque tardaría un día más en llegar.</p>
+
+        <h2>Los datos: pogo-data-api</h2>
+        <p>Para no copiar a mano la Pokédex, la app lee <a href="https://github.com/WatWowMap/pogo-data-api">pogo-data-api</a>: un repositorio de WatWowMap con los datos del juego en JSON, servidos directamente desde GitHub. Con Retrofit, la API se describe en una interfaz:</p>
+
+        <bloque-codigo lenguaje="kotlin" archivo="data/remote/pogodata/PogoDataApi.kt"><script type="text/plain">
+          interface PogoDataApi {
+
+              @GET("pokemon.json")
+              suspend fun getAllPokemon(): List<PokemonDto>
+
+              @GET("moves/{id}.json")
+              suspend fun getMove(@Path("id") id: Int): MoveDto
+          }
+        </script></bloque-codigo>
+
+        <nota-margen lado="izquierda" tinta="roja">Pista: esta fuente de datos no duró. Tiene su propia entrada.</nota-margen>
+        <p>Funcionaba, pero con trampa: el buscador pedía el <code>pokemon.json</code> completo cada vez que escribías una letra, y cada ataque se pedía en una llamada aparte. Para un primer día valía. Más adelante llegaron la caché en disco y el cambio de fuente.</p>
+
+        <h2>Cómo separé la arquitectura</h2>
+        <p>Aunque la pantalla era sencilla, desde el principio separé el código en tres capas:</p>
+
+        <bloque-codigo lenguaje="text"><script type="text/plain">
+          com.mateo.pokemongoassistant
+          ├── data/            de dónde salen los datos
+          │   ├── remote/      la API (Retrofit) y sus DTO
+          │   ├── mapper/      DTO → modelo de la app
+          │   └── repository/  implementaciones de los repositorios
+          ├── domain/          qué hace la app, sin saber de Android
+          │   ├── model/       Pokemon, Move, IV, PokemonToAnalyze…
+          │   ├── repository/  interfaces
+          │   └── usecase/     una acción por clase
+          ├── presentation/    pantallas (Compose) y ViewModels
+          └── AppContainer.kt  conecta las piezas
+        </script></bloque-codigo>
+
+        <h3>domain: lo que hace la app</h3>
+        <p>En el centro están los modelos y las <strong>interfaces</strong> de los repositorios. El dominio dice «necesito Pokémon», pero no sabe si vienen de internet, de una base de datos o de un fichero:</p>
+
+        <bloque-codigo lenguaje="kotlin" archivo="domain/repository/PokemonRepository.kt"><script type="text/plain">
+          interface PokemonRepository {
+              suspend fun getPokemon(id: Int): Pokemon
+              suspend fun getAllPokemon(): List<Pokemon>
+          }
+        </script></bloque-codigo>
+
+        <p>Cada acción es un <strong>caso de uso</strong>, una clase pequeña con una sola función. Buscar un Pokémon es esto:</p>
+
+        <bloque-codigo lenguaje="kotlin" archivo="domain/usecase/SearchPokemonUseCase.kt"><script type="text/plain">
+          class SearchPokemonUseCase(
+              private val repository: PokemonRepository
+          ) {
+              suspend operator fun invoke(query: String): List<Pokemon> {
+                  if (query.isBlank()) return emptyList()
+
+                  return repository
+                      .getAllPokemon()
+                      .filter { it.name.contains(query.trim(), ignoreCase = true) }
+              }
+          }
+        </script></bloque-codigo>
+
+        <h3>data: de dónde salen los datos</h3>
+        <p>Aquí vive todo lo que depende de la fuente: la interfaz de Retrofit, los DTO con la forma exacta del JSON y un <strong>mapper</strong> que los traduce al modelo de la app. Por ejemplo, la API da los tipos como números (2 es Lucha) y el mapper los convierte en <code>PokemonType.FIGHTING</code>. Así, el resto de la app nunca ve el JSON.</p>
+
+        <bloque-codigo lenguaje="kotlin" archivo="data/repository/PokemonRepositoryImpl.kt"><script type="text/plain">
+          class PokemonRepositoryImpl : PokemonRepository {
+
+              override suspend fun getAllPokemon(): List<Pokemon> {
+                  return PogoDataClient.api
+                      .getAllPokemon()
+                      .map(PokemonMapper::toDomain)
+              }
+              // …
+          }
+        </script></bloque-codigo>
+
+        <h3>presentation: la pantalla</h3>
+        <p>Un <code>PokemonViewModel</code> guarda el estado (resultados de búsqueda, Pokémon elegido, ataques, errores) en <code>StateFlow</code> y la pantalla de Compose solo lo pinta. La validación del formulario también vive en el ViewModel: si todo está bien, construye un <code>PokemonToAnalyze</code>, que es lo que más tarde recibiría el análisis.</p>
+
+        <h3>AppContainer: conectar las piezas a mano</h3>
+        <p>No usé Hilt ni Koin. Un objeto crea los repositorios y los casos de uso, y la actividad los pasa al ViewModel:</p>
+
+        <bloque-codigo lenguaje="kotlin" archivo="AppContainer.kt"><script type="text/plain">
+          object AppContainer {
+
+              private val pokemonRepository: PokemonRepository =
+                  PokemonRepositoryImpl()
+
+              val searchPokemonUseCase = SearchPokemonUseCase(pokemonRepository)
+              val getMoveUseCase = GetMoveUseCase(MoveRepositoryImpl())
+          }
+        </script></bloque-codigo>
+
+        <nota-clip titulo="¿MERECIÓ LA PENA?">Sí. Diez días después cambié la fuente de datos entera y solo tuve que tocar la capa <code>data</code>: el buscador, el ViewModel y la pantalla ni se enteraron.</nota-clip>
+
+        <hr>
+        <p>Al acabar el día, la app sabía qué Pokémon tenías, pero no qué opinar de él. El botón «Analizar Pokémon» no enseñaba nada. Para eso hacían falta los rankings, que llegaron al día siguiente.</p>
+      </article>
+
+      <navegacion-entradas></navegacion-entradas>
+    </pagina-derecha>
+  </cuaderno-libro>
+</body>
+</html>

@@ -23,10 +23,11 @@ Abre http://localhost:4321. Al guardar un archivo, recarga la página.
 | Añadir un post             | Apuntarlo en `datos.js` (dentro de su expedición) y copiar `plantillas/entrada/` a `expediciones/<id>/<id-entrada>/` |
 | Guardar algo sin publicar  | Poner `borrador: true` en `datos.js` (se ve en localhost, no en la web)                     |
 | Añadir imágenes            | Guardarlas en `img/<id>/` y usarlas con ruta absoluta: `/img/<id>/foto.png`                 |
+| Añadir un vídeo            | Guardarlo en `videos/<id>/` y usar `<video-campo src="/videos/<id>/demo.mp4">`, o subirlo a YouTube y usar `youtube="ID"` |
 
 `datos.js` es la lista de lo que existe: con ella se montan el índice, el registro de cada expedición, el orden al pasar página y los números de página. El contenido de cada página está en su `index.html`.
 
-La expedición `ejemplo` y su entrada `01-anatomia-de-una-entrada` explican cada componente con su código. Bórralas (carpeta y entrada en `datos.js`) cuando ya no te hagan falta.
+La expedición `ejemplo` y su entrada `01-anatomia-de-una-entrada` explican cada componente con su código. Están marcadas como `borrador`, así que solo se ven en local: ábrelas en http://localhost:4321/expediciones/ejemplo/ cuando necesites la referencia.
 
 ## Componentes
 
@@ -64,6 +65,7 @@ La expedición `ejemplo` y su entrada `01-anatomia-de-una-entrada` explican cada
 <nota-flecha>Anotación con flecha, en su propia línea</nota-flecha>
 <nota-clip titulo="¡OJO!">Nota amarilla con clip</nota-clip>
 <foto-polaroid src="/img/x.png" pie="Pie de foto" giro="-3"></foto-polaroid>
+<video-campo src="/videos/x.mp4" pie="Pie" vertical></video-campo>  <!-- o youtube="ID"; sin ninguno, hueco «vídeo pendiente» -->
 <boceto-dibujo src="/img/x.svg" pie="Fig. 1 — …"></boceto-dibujo>
 <ficha-especimen material="Kotlin, Compose"></ficha-especimen>
 <titulo-pagina>Título con subrayado</titulo-pagina>
@@ -101,6 +103,7 @@ componentes/               los Web Components
   codigo.js                bloques de código con colores
 estilos/cuaderno.css       toda la estética
 img/                       imágenes
+videos/                    vídeos de los posts
 plantillas/                páginas en blanco para copiar
 ```
 

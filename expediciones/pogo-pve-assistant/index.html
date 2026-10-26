@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PoGo PvE Assistant · Cuaderno de campo</title>
+  <meta name="description" content="Una app Android para preparar las incursiones de Pokémon GO: rankings, análisis de tus Pokémon, colección y planificador.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/estilos/cuaderno.css">
+  <script src="/componentes/tema.js"></script>
+  <script type="module" src="/componentes/index.js"></script>
+</head>
+<body>
+  <cuaderno-libro>
+    <pagina-izquierda>
+      <campos-expedicion></campos-expedicion>
+      <foto-polaroid src="/img/pogo-pve-assistant/hoy-buscador.png" pie="la app hoy (v1.28)"></foto-polaroid>
+      <ficha-especimen material="Kotlin, Jetpack Compose, Room, Retrofit"></ficha-especimen>
+      <sello-estado></sello-estado>
+      <nota-flecha style="margin-top:22px">objetivo: saber en qué Pokémon merece la pena gastar polvo y caramelos para las incursiones</nota-flecha>
+    </pagina-izquierda>
+
+    <pagina-derecha>
+      <encabezado-expedicion></encabezado-expedicion>
+      <article class="prose">
+        <p><strong>PoGo PvE Assistant</strong> es una app Android para preparar las incursiones (el PvE) de Pokémon GO. Los rankings de internet te dicen cuáles son los mejores Pokémon del juego; esta app te dice <mark>cuáles son los mejores de tu colección</mark> y en cuáles merece la pena gastar tus recursos. También qué equipo llevar contra cada jefe y qué eventos te interesan.</p>
+        <p>La empecé el 14 de septiembre de 2026. En seis semanas pasó de un formulario sin diseño a la versión 1.28, con 128 commits por el camino. En esta expedición cuento cómo se construyó, funcionalidad a funcionalidad y en el orden en que se hizo.</p>
+        <nota-margen lado="derecha" tinta="lapiz">El lector de pantalla lo dejo para el final, aunque nació a mitad del proyecto.</nota-margen>
+        <p>Cada entrada cubre una funcionalidad completa, desde que nace hasta cómo está hoy.</p>
+      </article>
+      <p><a href="https://github.com/Keboss11/PokemonGoAssistant" class="hand" style="font-size:22px">→ ver el código</a></p>
+      <registro-expedicion></registro-expedicion>
+    </pagina-derecha>
+  </cuaderno-libro>
+</body>
+</html>

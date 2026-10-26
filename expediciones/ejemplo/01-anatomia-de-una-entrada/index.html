@@ -118,6 +118,16 @@
           <foto-polaroid src="/img/mi-proyecto/captura.png" pie="Pie de foto" giro="2"></foto-polaroid>
         </script></bloque-codigo>
 
+        <h2>Vídeo</h2>
+        <p>Un vídeo sale en una tira de película. Puede ser un archivo propio (<code>src</code>) o de YouTube (<code>youtube</code>, con el id del vídeo). Con <code>vertical</code> toma la forma de una grabación del móvil. Si aún no lo tienes, déjalo sin <code>src</code> ni <code>youtube</code> y sale el hueco:</p>
+        <video-campo pie="esto es <video-campo>" vertical></video-campo>
+
+        <bloque-codigo lenguaje="html"><script type="text/plain">
+          <video-campo src="/videos/mi-proyecto/demo.mp4" pie="Pie" vertical></video-campo>
+          <video-campo youtube="ID-del-video" pie="Pie"></video-campo>
+          <video-campo pie="Pie" vertical></video-campo>
+        </script></bloque-codigo>
+
         <p>Y una imagen normal (<code>&lt;img&gt;</code>) sale como una foto pegada, sin pie:</p>
         <img src="/img/ejemplo/boceto.svg" alt="Esto es un img normal">
 

@@ -22,9 +22,32 @@ export const CUADERNO = {
 // borrador: true → solo se ve en local (localhost), no en la web.
 export const EXPEDICIONES = [
   {
+    id: 'pogo-pve-assistant',
+    titulo: 'PoGo PvE Assistant',
+    habitat: 'Android',
+    estado: 'en curso',
+    inicio: '2026-09-14',
+    pendientes: [
+      'Los rankings',
+      'El motor de cálculo',
+      '¿Merece la pena invertir?',
+      'Datos del juego: la saga de las APIs',
+    ],
+    entradas: [
+      {
+        id: '01-el-primer-dia',
+        titulo: 'El primer día: buscar un Pokémon y elegir sus ataques',
+        fecha: '2026-09-14',
+        resumen: 'Primero las funcionalidades, después el diseño: lo que hice el primer día y cómo separé la app en capas.',
+      },
+    ],
+  },
+  // Referencia de todos los componentes: solo se ve en local.
+  {
     id: 'ejemplo',
     titulo: 'Expedición de ejemplo',
     habitat: 'Plantilla',
+    borrador: true,
     estado: 'en curso', // en curso | terminado | en pausa | por explorar
     inicio: '2026-10-25',
     pendientes: ['Esto es un «pendiente»', 'Las entradas que aún no has escrito'],

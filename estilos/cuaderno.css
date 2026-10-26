@@ -30,7 +30,7 @@ cuaderno-libro { display: contents; }
 /* mientras carga el JS no se ve nada; si el JS falla, el contenido aparece igual */
 cuaderno-libro:not([data-listo]) { display: block; max-width: 760px; margin: 0 auto; padding: 24px 16px; opacity: 0; animation: mostrar .01s 1.5s forwards; }
 @keyframes mostrar { to { opacity: 1; } }
-nota-margen, nota-clip, nota-flecha, foto-polaroid, boceto-dibujo, ficha-especimen, bloque-codigo, titulo-pagina, titulo-seccion,
+nota-margen, nota-clip, nota-flecha, foto-polaroid, video-campo, boceto-dibujo, ficha-especimen, bloque-codigo, titulo-pagina, titulo-seccion,
 lista-material, lista-aprendido, ficha-propietario, leyenda-estados, brujula-dibujo, indice-expediciones, ultimas-entradas,
 campos-cuaderno, campos-expedicion, campos-entrada, encabezado-expedicion, encabezado-entrada, registro-expedicion, navegacion-entradas { display: block; }
 sello-estado { display: inline-block; }
@@ -145,6 +145,24 @@ h3.tw::before { content: "§ "; }
 .polaroid::after { right: -16px; transform: rotate(28deg); }
 .polaroid img { display: block; width: 100%; height: auto; }
 .polaroid figcaption, .polaroid p { position: absolute; bottom: 6px; left: 0; right: 0; margin: 0; text-align: center; font-family: var(--hand); font-size: 21px; line-height: 1.2; }
+/* vídeo: tira de película pegada con cinta; los agujeros son dos degradados repetidos a los lados */
+.video { position: relative; margin: 10px auto 28px; padding: 12px 22px 10px; max-width: 100%; transform: rotate(-1deg); color: #2e2a24;
+  background:
+    repeating-linear-gradient(#f6f0df 0 7px, transparent 7px 16px) left 7px top 10px / 8px calc(100% - 20px) no-repeat,
+    repeating-linear-gradient(#f6f0df 0 7px, transparent 7px 16px) right 7px top 10px / 8px calc(100% - 20px) no-repeat,
+    #1d1a16;
+  box-shadow: 2px 8px 16px var(--shadow); }
+.video::before { content: ""; position: absolute; top: -11px; left: 50%; width: 90px; height: 22px; margin-left: -45px; background: var(--tape); transform: rotate(-2deg); }
+.video.horizontal { width: 560px; }
+.video.vertical { width: 290px; }
+.video .pantalla { position: relative; background: #000; }
+.video.horizontal .pantalla { aspect-ratio: 16 / 9; }
+.video.vertical .pantalla { aspect-ratio: 9 / 16; }
+.video video, .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.video .hueco { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  background: var(--paper); border: 2px dashed var(--muted); color: var(--muted); font-family: var(--hand); font-size: 24px; }
+.video .play { display: grid; place-items: center; width: 58px; height: 58px; border: 2.5px solid currentColor; border-radius: 50%; font-family: var(--body); font-size: 22px; padding-left: 4px; }
+.video p { margin: 8px 0 0; text-align: center; font-family: var(--hand); font-size: 21px; line-height: 1.2; color: #f6f0df; }
 .specimen { position: relative; background: var(--card); border: 1px solid #cdbb8f; padding: 16px 18px 14px 40px; margin: 0 0 22px; transform: rotate(1.2deg); box-shadow: 2px 4px 10px var(--shadow); clip-path: polygon(18px 0, 100% 0, 100% 100%, 18px 100%, 0 50%); }
 .specimen::before { content: ""; position: absolute; left: 16px; top: 50%; width: 10px; height: 10px; margin-top: -5px; border-radius: 50%; border: 2px solid var(--muted); background: var(--paper); }
 .specimen dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; }
@@ -212,7 +230,7 @@ pre.codigo code { background: none; padding: 0; font: inherit; }
 .margen.roja { --tinta: var(--red); }
 .margen.lapiz { --tinta: var(--muted); }
 .margen p { margin: 0; display: inline; }
-.prose h2, .prose h3, .prose pre, .nota, .prose hr, .prose img, .prose figure, .prose foto-polaroid { clear: both; }
+.prose h2, .prose h3, .prose pre, .nota, .prose hr, .prose img, .prose figure, .prose foto-polaroid, .prose video-campo { clear: both; }
 .prose::after { content: ""; display: block; clear: both; }
 
 /* tachado (~~texto~~) y círculo a mano (<span class="circulo">) */

@@ -53,6 +53,32 @@ definir('foto-polaroid', class extends Componente {
   }
 });
 
+// <video-campo src="/videos/x.mp4" pie="Pie" vertical></video-campo>   vídeo propio
+// <video-campo youtube="dQw4w9WgXcQ" pie="Pie"></video-campo>          vídeo de YouTube
+// <video-campo pie="Pie" vertical></video-campo>                       hueco «vídeo pendiente»
+// vertical → formato móvil (9:16); sin él, 16:9. poster="/img/x.png" pone una portada al vídeo propio.
+definir('video-campo', class extends Componente {
+  pintar() {
+    const pie = this.getAttribute('pie');
+    const src = this.getAttribute('src');
+    const yt = this.getAttribute('youtube');
+    this.classList.add('video', this.hasAttribute('vertical') ? 'vertical' : 'horizontal');
+    this.setAttribute('role', 'figure');
+    let pantalla;
+    if (src) {
+      const poster = this.getAttribute('poster');
+      pantalla = `<video src="${esc(src)}" controls preload="metadata" playsinline${poster ? ` poster="${esc(poster)}"` : ''}></video>`;
+    } else if (yt) {
+      pantalla = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(yt)}" title="${esc(pie ?? 'Vídeo')}" loading="lazy"
+        allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    } else {
+      this.classList.add('pendiente');
+      pantalla = `<div class="hueco"><span class="play" aria-hidden="true">▶</span><span>vídeo pendiente</span></div>`;
+    }
+    this.innerHTML = `<div class="pantalla">${pantalla}</div>${pie ? `<p>${esc(pie)}</p>` : ''}`;
+  }
+});
+
 // <boceto-dibujo src="/img/x.svg" pie="Fig. 1 — …"></boceto-dibujo>
 definir('boceto-dibujo', class extends Componente {
   pintar() {
