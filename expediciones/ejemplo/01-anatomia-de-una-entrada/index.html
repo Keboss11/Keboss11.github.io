@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anatomía de una entrada · Cuaderno de campo</title>
+  <meta name="description" content="Una entrada de ejemplo que enseña todos los componentes del cuaderno y cómo se escriben.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/estilos/cuaderno.css">
+  <script src="/componentes/tema.js"></script>
+  <script type="module" src="/componentes/index.js"></script>
+</head>
+<body>
+  <!--
+    ENTRADA DE EJEMPLO
+    1. Apunta la entrada en /datos.js, dentro de su expedición (id, titulo, fecha, resumen).
+    2. Copia esta carpeta a /expediciones/<expedicion>/<id-entrada>/ y cambia los textos.
+  -->
+  <cuaderno-libro>
+    <pagina-izquierda>
+      <campos-entrada lugar="esto es «lugar»" clima="«clima» ☂"></campos-entrada>
+
+      <titulo-seccion>MATERIAL</titulo-seccion>
+      <lista-material>
+        <li>Esto es &lt;lista-material&gt;</li>
+        <li>Una lista con</li>
+        <li>lo que usaste</li>
+      </lista-material>
+
+      <titulo-seccion>BOCETO</titulo-seccion>
+      <boceto-dibujo src="/img/ejemplo/boceto.svg" pie="Fig. 1 — esto es <boceto-dibujo>"></boceto-dibujo>
+
+      <titulo-seccion>LO APRENDIDO</titulo-seccion>
+      <lista-aprendido>
+        <li>Esto es &lt;lista-aprendido&gt;</li>
+        <li>Ideas cortas, a mano</li>
+      </lista-aprendido>
+
+      <titulo-seccion>NOTAS AL MARGEN</titulo-seccion>
+      <nota-flecha>Esto es una &lt;nota-flecha&gt;: anotaciones sueltas, cada una con su flecha.</nota-flecha>
+      <nota-flecha>Úsalas para comentarios que no encajan en el texto.</nota-flecha>
+    </pagina-izquierda>
+
+    <pagina-derecha>
+      <encabezado-entrada></encabezado-entrada>
+
+      <article class="prose">
+        <p>Esto es un <strong>párrafo normal</strong> de HTML. Todo lo que escribes dentro de <code>&lt;pagina-derecha&gt;</code> sale en esta página, y lo de <code>&lt;pagina-izquierda&gt;</code> sale en la otra. El título, el número y la fecha los ponen solos <code>&lt;encabezado-entrada&gt;</code> y <code>&lt;campos-entrada&gt;</code> leyendo <code>datos.js</code>; el tiempo de lectura se calcula contando las palabras de esta página.</p>
+
+        <nota-margen lado="derecha">Esto es una anotación en el lado derecho. El texto de al lado la rodea.</nota-margen>
+        <p>Las <strong>notas al margen</strong> son anotaciones escritas a mano que flotan junto al texto, como cuando escribes en el borde de una hoja. La que tienes a la derecha se escribe justo antes del párrafo al que acompaña. En el móvil no hay sitio en los lados, así que pasan a ocupar su propia línea, con la raya a la izquierda.</p>
+
+        <bloque-codigo lenguaje="html"><script type="text/plain">
+          <nota-margen lado="derecha">Anotación en el lado derecho.</nota-margen>
+        </script></bloque-codigo>
+
+        <nota-margen lado="izquierda" tinta="roja">Esto es una anotación en el lado izquierdo, con tinta roja.</nota-margen>
+        <p>También puedes ponerlas en el <strong>lado izquierdo</strong> y cambiar el color de la tinta. Por defecto se escriben en azul. Con <code>tinta="roja"</code> quedan bien para errores y avisos, y con <code>tinta="lapiz"</code> salen en gris, más discretas. El resto de la frase sigue fluyendo alrededor de la nota.</p>
+
+        <bloque-codigo lenguaje="html"><script type="text/plain">
+          <nota-margen lado="izquierda" tinta="roja">Lado izquierdo, tinta roja.</nota-margen>
+          <nota-margen lado="derecha" tinta="lapiz">Lado derecho, a lápiz.</nota-margen>
+        </script></bloque-codigo>
+
+        <h2>Esto es un apartado (h2)</h2>
+        <p>Los <code>&lt;h2&gt;</code> salen como encabezados escritos a mano en rojo. Los <code>&lt;h3&gt;</code> salen a máquina de escribir, como este:</p>
+        <h3>Esto es un subapartado (h3)</h3>
+
+        <nota-flecha>Esto es una &lt;nota-flecha&gt; dentro del texto: ocupa su propia línea, con una flecha, en vez de ir a un lado.</nota-flecha>
+
+        <p>Dentro del texto puedes marcar cosas a mano: <mark>esto está subrayado con fosforito</mark>, <del>esto está tachado</del> y <span class="circulo">esto va en un círculo</span>. Las tres son HTML normal:</p>
+
+        <bloque-codigo lenguaje="html"><script type="text/plain">
+          <mark>fosforito</mark>, <del>tachado</del> y <span class="circulo">círculo</span>
+        </script></bloque-codigo>
+
+        <nota-clip titulo="¡OJO!">Esto es una &lt;nota-clip&gt;. Úsala para avisos, errores o cosas que no quieres que nadie se salte.</nota-clip>
+
+        <bloque-codigo lenguaje="html"><script type="text/plain">
+          <nota-clip titulo="¡OJO!">Texto de la nota.</nota-clip>
+        </script></bloque-codigo>
+
+        <h2>Código</h2>
+        <p>Los bloques de código salen en una ficha pegada con cinta, con colores. Indica el lenguaje y, si quieres, el nombre del archivo:</p>
+
+        <bloque-codigo lenguaje="kotlin" archivo="Saludo.kt"><script type="text/plain">
+          // Esto es un <bloque-codigo> en Kotlin
+          @Composable
+          fun Saludo(nombre: String) {
+              Text(text = "Hola, $nombre")
+          }
+        </script></bloque-codigo>
+
+        <nota-margen lado="derecha" tinta="lapiz">Esto es una nota a lápiz. Las líneas largas de código se desplazan dentro de la ficha.</nota-margen>
+        <p>Mete el código dentro de <code>&lt;script type="text/plain"&gt;</code>: así puedes escribir <code>&lt;</code> y <code>&gt;</code> tal cual sin que el navegador los confunda con etiquetas. La sangría común se quita sola.</p>
+
+        <bloque-codigo lenguaje="html">
+          &lt;bloque-codigo lenguaje="kotlin" archivo="Main.kt"&gt;&lt;script type="text/plain"&gt;
+            fun main() = println("hola")
+          &lt;/script&gt;&lt;/bloque-codigo&gt;
+        </bloque-codigo>
+
+        <p>Para listas, tablas y enlaces se usa el HTML de siempre:</p>
+        <ul>
+          <li>Esto es una lista</li>
+          <li>con <a href="https://developer.mozilla.org/es/docs/Web/HTML">un enlace</a></li>
+        </ul>
+        <table>
+          <tr><th>Esto es</th><th>una tabla</th></tr>
+          <tr><td>campo</td><td>valor</td></tr>
+        </table>
+
+        <h2>Imágenes</h2>
+        <p>Una polaroid con pie de foto. Con <code>giro</code> cambias cuánto está torcida:</p>
+        <foto-polaroid src="/img/ejemplo/foto.svg" pie="esto es <foto-polaroid>" giro="2"></foto-polaroid>
+
+        <bloque-codigo lenguaje="html"><script type="text/plain">
+          <foto-polaroid src="/img/mi-proyecto/captura.png" pie="Pie de foto" giro="2"></foto-polaroid>
+        </script></bloque-codigo>
+
+        <p>Y una imagen normal (<code>&lt;img&gt;</code>) sale como una foto pegada, sin pie:</p>
+        <img src="/img/ejemplo/boceto.svg" alt="Esto es un img normal">
+
+        <hr>
+        <p>La línea discontinua de arriba es un <code>&lt;hr&gt;</code>: sirve para separar partes. Debajo, <code>&lt;navegacion-entradas&gt;</code> pone los enlaces a la entrada anterior y siguiente.</p>
+      </article>
+
+      <navegacion-entradas></navegacion-entradas>
+    </pagina-derecha>
+  </cuaderno-libro>
+</body>
+</html>

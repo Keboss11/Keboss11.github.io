@@ -1,64 +1,107 @@
 # Cuaderno de campo
 
-Blog/portfolio con forma de cuaderno de campo: cada **expedición** es un proyecto y cada **entrada** es un post sobre cómo lo construí. Se navega pasando páginas (con animación) y se publica solo en GitHub Pages: **https://keboss11.github.io**
+Blog/portfolio con forma de cuaderno de campo: cada **expedición** es un proyecto y cada **entrada** es un post sobre cómo lo construí. Se navega pasando páginas (con animación) y se publica en GitHub Pages: **https://keboss11.github.io**
 
-Hecho con [Astro](https://astro.build). Sin datos: es una plantilla para rellenar.
+Hecho con **HTML, CSS y JavaScript**, sin frameworks ni build. Las piezas reutilizables son **Web Components**: etiquetas propias como `<nota-margen>` o `<foto-polaroid>` que el navegador entiende directamente.
 
-## Ponerlo en marcha
+## Verlo en local
+
+Los componentes son módulos de JavaScript, así que hace falta un servidor (abrir el archivo con doble clic no funciona):
 
 ```bash
-npm install
-npm run dev
+python -m http.server 4321
 ```
 
-Abre http://localhost:4321. Los cambios se ven al guardar.
+Abre http://localhost:4321. Al guardar un archivo, recarga la página.
 
 ## Escribir
 
-| Quiero…                  | Hago…                                                                                     |
-| ------------------------ | ----------------------------------------------------------------------------------------- |
-| Cambiar mi nombre, etc.  | Editar `src/config.ts`                                                                    |
-| Añadir un proyecto       | Copiar `plantillas/expedicion.md` a `src/content/expediciones/<nombre>.md`               |
-| Añadir un post           | Copiar `plantillas/entrada.md` a `src/content/entradas/<nombre-expedicion>/<01-titulo>.md` |
-| Guardar algo sin publicar | Poner `borrador: true` (se ve en local, no en la web)                                    |
+| Quiero…                    | Hago…                                                                                       |
+| -------------------------- | ------------------------------------------------------------------------------------------- |
+| Cambiar mi nombre, etc.    | Editar `CUADERNO` en `datos.js`                                                             |
+| Añadir un proyecto         | Apuntarlo en `datos.js` y copiar `plantillas/expedicion/` a `expediciones/<id>/`            |
+| Añadir un post             | Apuntarlo en `datos.js` (dentro de su expedición) y copiar `plantillas/entrada/` a `expediciones/<id>/<id-entrada>/` |
+| Guardar algo sin publicar  | Poner `borrador: true` en `datos.js` (se ve en localhost, no en la web)                     |
+| Añadir imágenes            | Guardarlas en `img/<id>/` y usarlas con ruta absoluta: `/img/<id>/foto.png`                 |
 
-Las imágenes pueden ir junto al Markdown (rutas relativas, `./fotos/x.png`) o en `public/` (rutas absolutas, `/x.png`).
+`datos.js` es la lista de lo que existe: con ella se montan el índice, el registro de cada expedición, el orden al pasar página y los números de página. El contenido de cada página está en su `index.html`.
 
-### Ejemplo completo
+La expedición `ejemplo` y su entrada `01-anatomia-de-una-entrada` explican cada componente con su código. Bórralas (carpeta y entrada en `datos.js`) cuando ya no te hagan falta.
 
-En `src/content/expediciones/ejemplo.md` y `src/content/entradas/ejemplo/01-anatomia-de-una-entrada.md` hay una expedición y un post de ejemplo que explican cada elemento y cómo se escribe. Están publicados en la web. Cópialos como punto de partida y bórralos cuando ya no te hagan falta.
+## Componentes
 
-### Elementos de cuaderno dentro del Markdown
+### Estructura de cada página
 
-- `<aside class="margen derecha">…</aside>` → anotación a mano en el lado derecho (el texto la rodea).
-- `<aside class="margen izquierda">…</aside>` → lo mismo, en el lado izquierdo. Añade `roja` o `lapiz` para cambiar la tinta.
-- `notas:` en los datos de la entrada → anotaciones con flecha en la página izquierda.
-- `> texto` → anotación escrita a mano, en azul, en su propia línea.
-- `~~texto~~` → tachado a mano. `<span class="circulo">texto</span>` → rodeado con un círculo.
-- `<mark>texto</mark>` → subrayado con fosforito.
-- `<div class="nota">…</div>` → nota amarilla con clip.
-- Bloques de código con ```` ``` ```` → ficha pegada con cinta (con colores).
-- `![alt](imagen.png)` → foto tipo polaroid.
-- `---` → línea de corte discontinua.
+```html
+<cuaderno-libro>
+  <pagina-izquierda> … </pagina-izquierda>
+  <pagina-derecha> … </pagina-derecha>
+</cuaderno-libro>
+```
 
-### Orden de las páginas
+`<cuaderno-libro>` pone todo lo demás: cabecera, tapa, esquinas dobladas, cinta, números de página, modo noche y la animación de pasar página.
 
-Índice → expedición 1 → sus entradas (por `numero`) → expedición 2 → … Las esquinas dobladas y las flechas ← → del teclado siguen ese orden.
+### Se rellenan solos con `datos.js`
+
+| Componente                 | Dónde              | Qué pone                                        |
+| -------------------------- | ------------------ | ----------------------------------------------- |
+| `<campos-cuaderno>`        | índice, izquierda  | Nº de cuaderno y año                            |
+| `<ficha-propietario>`      | índice, izquierda  | «Este cuaderno pertenece a…»                    |
+| `<indice-expediciones>`    | índice, derecha    | Lista de proyectos con su estado y página       |
+| `<ultimas-entradas>`       | índice, derecha    | Las 5 entradas más recientes (`cuantas="3"`)    |
+| `<campos-expedicion>`      | expedición, izq.   | Nº de expedición y fecha de inicio              |
+| `<encabezado-expedicion>`  | expedición, der.   | Bitácora, nº de entradas y título               |
+| `<registro-expedicion>`    | expedición, der.   | Entradas y pendientes                           |
+| `<sello-estado>`           | donde quieras      | Sello «EN CURSO», «TERMINADO»…                  |
+| `<campos-entrada>`         | entrada, izquierda | Nº, fecha, lectura (+ `lugar` y `clima`)        |
+| `<encabezado-entrada>`     | entrada, derecha   | Expedición, nº y título                         |
+| `<navegacion-entradas>`    | entrada, derecha   | Entrada anterior / siguiente                    |
+
+### Para escribir
+
+```html
+<nota-margen lado="derecha" tinta="roja">Nota a mano en el lateral</nota-margen>  <!-- tinta: azul (por defecto), roja, lapiz -->
+<nota-flecha>Anotación con flecha, en su propia línea</nota-flecha>
+<nota-clip titulo="¡OJO!">Nota amarilla con clip</nota-clip>
+<foto-polaroid src="/img/x.png" pie="Pie de foto" giro="-3"></foto-polaroid>
+<boceto-dibujo src="/img/x.svg" pie="Fig. 1 — …"></boceto-dibujo>
+<ficha-especimen material="Kotlin, Compose"></ficha-especimen>
+<titulo-pagina>Título con subrayado</titulo-pagina>
+<titulo-seccion>MATERIAL</titulo-seccion>
+<lista-material><li>…</li></lista-material>
+<lista-aprendido><li>…</li></lista-aprendido>
+<leyenda-estados></leyenda-estados>
+<brujula-dibujo></brujula-dibujo>
+
+<bloque-codigo lenguaje="kotlin" archivo="Main.kt"><script type="text/plain">
+  fun main() = println("hola")
+</script></bloque-codigo>
+```
+
+Dentro de `<article class="prose">` también tienen estilo de cuaderno: `<h2>`, `<h3>`, `<mark>` (fosforito), `<del>` (tachado), `<span class="circulo">`, `<img>`, `<hr>`, listas y tablas.
+
+En `<bloque-codigo>`, mete el código dentro de `<script type="text/plain">` para poder escribir `<` y `>` tal cual. Los colores se ponen solos.
 
 ## Publicar
 
-Cada `git push` a `main` publica la web automáticamente (`.github/workflows/deploy.yml`). Puedes ver el progreso en la pestaña **Actions** del repositorio.
+GitHub Pages sirve los archivos tal cual desde la rama `main`: haz commit y `git push`, y en uno o dos minutos está en la web.
 
 ## Estructura
 
 ```
-src/
-  config.ts            datos generales del cuaderno
-  content.config.ts    campos de expediciones y entradas
-  content/             ← aquí escribes
-  layouts/Cuaderno.astro   el libro (doble página)
-  pages/               índice, expedición, entrada y 404
-  scripts/cuaderno.ts  animación de pasar página, tapa, tema y teclado
-  styles/cuaderno.css  toda la estética
-plantillas/            archivos de ejemplo para copiar
+index.html                 índice
+404.html                   página no encontrada
+datos.js                   ← lista de expediciones y entradas
+expediciones/<id>/index.html               ← portada de un proyecto
+expediciones/<id>/<id-entrada>/index.html  ← un post
+componentes/               los Web Components
+  libro.js                 el cuaderno y la animación
+  elementos.js             notas, polaroids, fichas…
+  listas.js                lo que se rellena con datos.js
+  codigo.js                bloques de código con colores
+estilos/cuaderno.css       toda la estética
+img/                       imágenes
+plantillas/                páginas en blanco para copiar
 ```
+
+La versión anterior, hecha con Astro, está guardada en la etiqueta `version-astro` de git.

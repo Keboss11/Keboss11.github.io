@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nombre del proyecto · Cuaderno de campo</title>
+  <meta name="description" content="Una frase sobre el proyecto.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/estilos/cuaderno.css">
+  <script src="/componentes/tema.js"></script>
+  <script type="module" src="/componentes/index.js"></script>
+</head>
+<body>
+  <!--
+    PLANTILLA DE EXPEDICIÓN (proyecto)
+    1. Apunta la expedición en /datos.js
+    2. Copia este archivo a /expediciones/<id>/index.html
+  -->
+  <cuaderno-libro>
+    <pagina-izquierda>
+      <campos-expedicion></campos-expedicion>
+      <foto-polaroid src="/img/<id>/foto.png" pie="Pie de foto"></foto-polaroid>
+      <ficha-especimen material="Tecnologías, separadas, por comas"></ficha-especimen>
+      <sello-estado></sello-estado>
+      <nota-flecha style="margin-top:22px">objetivo: qué quieres conseguir</nota-flecha>
+    </pagina-izquierda>
+
+    <pagina-derecha>
+      <encabezado-expedicion></encabezado-expedicion>
+      <article class="prose">
+        <p>Descripción del proyecto en dos o tres frases.</p>
+      </article>
+      <p><a href="https://github.com/Keboss11/" class="hand" style="font-size:22px">→ ver el código</a></p>
+      <registro-expedicion></registro-expedicion>
+    </pagina-derecha>
+  </cuaderno-libro>
+</body>
+</html>

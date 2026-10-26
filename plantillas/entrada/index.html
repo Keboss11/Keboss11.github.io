@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Título de la entrada · Cuaderno de campo</title>
+  <meta name="description" content="Una frase sobre la entrada.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/estilos/cuaderno.css">
+  <script src="/componentes/tema.js"></script>
+  <script type="module" src="/componentes/index.js"></script>
+</head>
+<body>
+  <!--
+    PLANTILLA DE ENTRADA (post)
+    1. Apunta la entrada en /datos.js, dentro de su expedición
+    2. Copia este archivo a /expediciones/<expedicion>/<id-entrada>/index.html
+    Mira /expediciones/ejemplo/01-anatomia-de-una-entrada/ para ver todos los componentes.
+  -->
+  <cuaderno-libro>
+    <pagina-izquierda>
+      <campos-entrada lugar="escritorio" clima="sol"></campos-entrada>
+
+      <titulo-seccion>MATERIAL</titulo-seccion>
+      <lista-material>
+        <li>Herramienta</li>
+      </lista-material>
+
+      <titulo-seccion>LO APRENDIDO</titulo-seccion>
+      <lista-aprendido>
+        <li>Algo que aprendiste</li>
+      </lista-aprendido>
+    </pagina-izquierda>
+
+    <pagina-derecha>
+      <encabezado-entrada></encabezado-entrada>
+      <article class="prose">
+        <p>Empieza aquí.</p>
+
+        <h2>Un apartado</h2>
+        <p>Más texto.</p>
+      </article>
+      <navegacion-entradas></navegacion-entradas>
+    </pagina-derecha>
+  </cuaderno-libro>
+</body>
+</html>

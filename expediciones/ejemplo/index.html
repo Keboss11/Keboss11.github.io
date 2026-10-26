@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expedición de ejemplo · Cuaderno de campo</title>
+  <meta name="description" content="Una expedición de ejemplo que explica cada parte de la portada de un proyecto.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/estilos/cuaderno.css">
+  <script src="/componentes/tema.js"></script>
+  <script type="module" src="/componentes/index.js"></script>
+</head>
+<body>
+  <!--
+    EXPEDICIÓN DE EJEMPLO
+    1. Apunta la expedición en /datos.js (id, titulo, habitat, estado, inicio, pendientes).
+    2. Copia esta carpeta a /expediciones/<id>/ y cambia los textos.
+    Lo que sale de datos.js (título, nº, fechas, sello, registro) se rellena solo.
+  -->
+  <cuaderno-libro>
+    <pagina-izquierda>
+      <campos-expedicion></campos-expedicion>
+      <foto-polaroid src="/img/ejemplo/foto.svg" pie="esto es <foto-polaroid>"></foto-polaroid>
+      <ficha-especimen material="Esto es el atributo «material»"></ficha-especimen>
+      <sello-estado></sello-estado>
+      <nota-flecha style="margin-top:22px">objetivo: esto es una &lt;nota-flecha&gt;, una anotación a mano con flecha</nota-flecha>
+    </pagina-izquierda>
+
+    <pagina-derecha>
+      <encabezado-expedicion></encabezado-expedicion>
+      <article class="prose">
+        <p>Esto es la <strong>descripción de la expedición</strong>: un párrafo normal de HTML. Cuéntala en dos o tres frases: qué es el proyecto y por qué lo empezaste.</p>
+        <p>Encima tienes <code>&lt;encabezado-expedicion&gt;</code>, que pone el título y el número de entradas a partir de <code>datos.js</code>.</p>
+        <p>En la <strong>página izquierda</strong> está la ficha del proyecto: <code>&lt;campos-expedicion&gt;</code> (nº e inicio), la polaroid es <code>&lt;foto-polaroid&gt;</code>, la etiqueta es <code>&lt;ficha-especimen&gt;</code>, el sello es <code>&lt;sello-estado&gt;</code> y la nota a mano es <code>&lt;nota-flecha&gt;</code>.</p>
+        <nota-margen lado="derecha">Esto es una &lt;nota-margen&gt; también aquí.</nota-margen>
+        <p>Más abajo está el <strong>registro</strong> (<code>&lt;registro-expedicion&gt;</code>). Lista las entradas que hayas apuntado en <code>datos.js</code> y, al final, los <code>pendientes</code> como «por explorar».</p>
+      </article>
+      <p><a href="https://github.com/Keboss11/Keboss11.github.io" class="hand" style="font-size:22px">→ ver el código</a></p>
+      <registro-expedicion></registro-expedicion>
+    </pagina-derecha>
+  </cuaderno-libro>
+</body>
+</html>
