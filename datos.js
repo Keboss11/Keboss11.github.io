@@ -10,9 +10,9 @@ export const CUADERNO = {
   titulo: 'Cuaderno de campo',
   numero: '01',
   etiqueta: 'PROYECTOS', // texto grande de la tapa
-  autor: 'Tu nombre',
+  autor: 'Mateo',
   desde: '2026',
-  presentacion: 'aquí apunto cómo construyo cosas: decisiones, código y errores.',
+  presentacion: 'proyectos que hago por gusto y lo que aprendo haciéndolos.',
   contacto: { texto: 'github.com/Keboss11', url: 'https://github.com/Keboss11' },
 };
 
