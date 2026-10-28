@@ -34,9 +34,9 @@ export const EXPEDICIONES = [
     entradas: [
       {
         id: '01-el-primer-dia',
-        titulo: 'El primer día: buscar un Pokémon y elegir sus ataques',
+        titulo: 'No tengo nada: necesito Pokémon',
         fecha: '2026-09-14',
-        resumen: 'Primero las funcionalidades, después el diseño: lo que hice el primer día y cómo separé la app en capas.',
+        resumen: 'De dónde sacar todos los Pokémon de Pokémon GO sin escribirlos a mano, y por qué separé la app en capas.',
       },
     ],
   },

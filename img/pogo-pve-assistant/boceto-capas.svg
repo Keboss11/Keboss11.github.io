@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 290" font-family="Caveat, cursive" font-size="19" fill="none" stroke="#2e2a24" stroke-width="1.8" stroke-linecap="round">
+  <!-- presentation -->
+  <path d="M20 16 L222 13 L224 62 L22 65Z"/>
+  <text x="34" y="38" fill="#2e2a24" stroke="none">presentation</text>
+  <text x="34" y="56" fill="#2e2a24" stroke="none" font-size="15">las pantallas</text>
+  <!-- domain -->
+  <path d="M18 112 L226 110 L228 162 L20 164Z" stroke-width="2.4"/>
+  <text x="34" y="134" fill="#2e2a24" stroke="none">domain</text>
+  <text x="34" y="153" fill="#2e2a24" stroke="none" font-size="15">qué hace la app</text>
+  <!-- data -->
+  <path d="M22 210 L224 208 L222 258 L20 261Z"/>
+  <text x="34" y="232" fill="#2e2a24" stroke="none">data</text>
+  <text x="34" y="251" fill="#2e2a24" stroke="none" font-size="15">de dónde salen los datos</text>
+  <!-- flechas hacia domain -->
+  <path d="M122 65 C 120 80, 124 92, 122 108 M116 102 l6 6 l6 -6"/>
+  <path d="M122 208 C 124 194, 120 180, 122 166 M116 172 l6 -6 l6 6"/>
+  <!-- fuentes -->
+  <path d="M286 196 L424 194 L426 230 L288 232Z"/>
+  <text x="298" y="219" fill="#2e2a24" stroke="none" font-size="17">pogo-data-api</text>
+  <path d="M290 246 L432 245 L434 280 L292 282Z" stroke-dasharray="5 4"/>
+  <text x="306" y="269" fill="#2e2a24" stroke="none" font-size="17">¿otra fuente?</text>
+  <path d="M224 228 C 248 222, 262 216, 284 213 M277 208 l7 5 l-7 6"/>
+  <path d="M222 244 C 246 252, 266 260, 288 262" stroke-dasharray="5 4"/>
+  <!-- anotaciones -->
+  <text x="240" y="136" fill="#2f5a8f" stroke="none" font-size="16">← no sabe de dónde</text>
+  <text x="256" y="154" fill="#2f5a8f" stroke="none" font-size="16">vienen los Pokémon</text>
+  <text x="240" y="44" fill="#2f5a8f" stroke="none" font-size="16">← solo pinta lo que</text>
+  <text x="256" y="62" fill="#2f5a8f" stroke="none" font-size="16">le da domain</text>
+  <text x="290" y="186" fill="#b8402f" stroke="none" font-size="15">solo se cambia esto ↓</text>
+</svg>
